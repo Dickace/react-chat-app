@@ -4,7 +4,7 @@
   "private": true,
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run -s precommit"
     }
   },
   "dependencies": {
@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint-staged" : "lint-staged"
+    "precommit" : "lint-staged",
+    "eslint" : "node_modules/.bin/eslint src/"
   },
   "eslintConfig": {
     "extends": [
@@ -59,8 +60,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
+      "node_modules/.bin/eslint src/ --max-warnings=0",
       "prettier --write",
-      "eslint src/ ",
       "git add"
     ],
     "*.{html,css,less,ejs}": [
