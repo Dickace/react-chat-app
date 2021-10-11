@@ -3,7 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 
 const SomeComponent = () => {
-        const some = 2
+        var some = 2
 
 
   return <div>Some</div>
