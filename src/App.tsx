@@ -3,18 +3,15 @@ import logo from './logo.svg'
 import './App.css'
 
 const SomeComponent = () => {
-        var some = 2
-
-
-
-
+  const some = 2
 
   return <div>Some</div>
 }
 
 function App() {
-  return (<div className="App">
-               <header className="App-header">
+  return (
+    <div className="App">
+      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
