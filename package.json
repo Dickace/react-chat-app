@@ -2,11 +2,6 @@
   "name": "react-chat-app",
   "version": "0.1.0",
   "private": true,
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run -s precommit"
-    }
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -60,8 +55,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "node_modules/.bin/eslint src/ --max-warnings=0",
       "prettier --write",
+      "node_modules/.bin/eslint src/ --fix",
       "git add"
     ],
     "*.{html,css,less,ejs}": [

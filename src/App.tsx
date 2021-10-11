@@ -4,7 +4,6 @@ import './App.css'
 
 const SomeComponent = () => {
   const some = 2
-
   return <div>Some</div>
 }
 
