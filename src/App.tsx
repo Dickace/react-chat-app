@@ -5,6 +5,8 @@ import './App.css'
 const SomeComponent = () => {
         var some = 2
 
+
+
   return <div>Some</div>
 }
 
