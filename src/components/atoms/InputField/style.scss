@@ -1,0 +1,48 @@
+.inputField{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: max-content;
+  &-input{
+    border: 1px solid #B3CDF8;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 354px;
+    height: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+    &__typing{
+      border: 1px solid #5C98F1;
+    }
+    &__error{
+      border: 1px solid #FB6262;
+    }
+  }
+  &-label{
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    margin-bottom: 4px;
+  }
+  &-msg{
+    margin-left: 8px;
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 19px;
+    &__warning{
+      color: yellow;
+    }
+    &__error{
+      color: #FB6262;
+    }
+  }
+  &-msgIcon{
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    top: 50%;
+    right: 16px;
+    transform: translate(0,-50%);
+  }
+}
