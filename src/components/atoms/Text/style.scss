@@ -1,0 +1,31 @@
+.TextBlock {
+  &-header{
+    cursor: default;
+    font-style: normal;
+    font-weight: bold;
+    &__1{
+      font-size: 42px;
+    }
+    &__2{
+      font-size: 27px;
+    }
+    &__3{
+      font-size: 20px;
+    }
+    &__4{
+      font-size: 15px;
+    }
+  }
+  &-plain{
+    cursor: default;
+    font-style: normal;
+    font-weight: 500;
+    &__1{
+      font-size: 16px;
+    }
+    &__2{
+      font-size: 14px;
+    }
+  }
+}
+

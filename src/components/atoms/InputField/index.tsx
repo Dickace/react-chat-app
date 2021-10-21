@@ -7,6 +7,7 @@ type Props = {
   label: string
   type: string
   layoutType?: string
+  style?: string
   msg?: string
   children?: React.ReactElement | string
 }
@@ -15,14 +16,15 @@ const InputField: React.FC<Props> = ({
   placeholder = 'InputText',
   label = 'Input field',
   type = 'text',
+  style,
   msg,
   children,
 }) => {
   let inputClassName = 'inputField-input'
   let msgClassName = 'inputField-msg'
-  if (type !== '') {
-    inputClassName += ` inputField-input__${type}`
-    msgClassName += ` inputField-msg__${type}`
+  if (style !== undefined) {
+    inputClassName += ` inputField-input__${style}`
+    msgClassName += ` inputField-msg__${style}`
   }
   return (
     <>
