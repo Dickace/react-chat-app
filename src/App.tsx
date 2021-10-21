@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './normalize.css'
 import './App.css'
 import Button from './components/atoms/Button'
 import InputField from './components/atoms/InputField'
 import Text from './components/atoms/Text'
 function App() {
-  const [type, setType] = useState('')
-
   const clickHandler = () => {
     console.log('empty')
   }
