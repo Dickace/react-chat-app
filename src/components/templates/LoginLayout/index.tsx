@@ -1,16 +1,17 @@
-import Index from '../../organisms/WellcomeArea'
-import Index from '../../organisms/BeautifulBackground'
+import WellcomeArea from '../../organisms/WellcomeArea'
+import BeautifulBackground from '../../atoms/BeautifulBackground'
+import BeautyBG from '../../../assets/img/beautyBackground.svg'
 import './style.scss'
 
-const Index = () => {
+const LoginLayout = () => {
   return (
     <section className={'wellcomeTemplate'}>
       <article className={'loginContainer'}>
-        <Index />
+        <WellcomeArea />
       </article>
-      <Index />
+      <BeautifulBackground src={BeautyBG} alt={'BeautyBg'} />
     </section>
   )
 }
 
-export default Index
+export default LoginLayout

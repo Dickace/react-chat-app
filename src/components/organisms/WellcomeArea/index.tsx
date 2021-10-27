@@ -2,7 +2,7 @@ import WellcomeHeader from '../../molecules/WellcomeHeader'
 import LoginForm from '../../molecules/LoginForm'
 import './style.scss'
 
-const Index = () => {
+const WellcomeArea = () => {
   return (
     <div className={'wellcomeArea'}>
       <WellcomeHeader />
@@ -10,4 +10,4 @@ const Index = () => {
     </div>
   )
 }
-export default Index
+export default WellcomeArea

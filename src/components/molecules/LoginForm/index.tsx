@@ -15,12 +15,13 @@ const LoginForm: React.FC<LoginFormProps> = (
     return 0
   }
 ) => {
-  const [userInputStyle, setUserInputStyle] = useState('regular')
-  const [passwordInputStyle, setPasswordInputStyle] = useState('regular')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [usernameErrorMsg, setUsernameErrorMsg] = useState('')
-  const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
+  const [userInputStyle, setUserInputStyle] = useState<string>('regular')
+  const [passwordInputStyle, setPasswordInputStyle] =
+    useState<string>('regular')
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [usernameErrorMsg, setUsernameErrorMsg] = useState<string>('')
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState<string>('')
   const handleChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {
     setUsername(event.currentTarget.value)
   }

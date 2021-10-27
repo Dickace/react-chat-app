@@ -2,43 +2,47 @@ import React, { useState } from 'react'
 import Avatar from '../../atoms/Avatar'
 import Text from '../../atoms/Text'
 import './style.scss'
-
-interface UserCardProps {
-  username?: string
-  recentMsg?: string
-  fromYou?: boolean
-  selected?: boolean
+export type UserCardItem = {
+  username: string
+  recentMsg: string
+  fromMe: boolean
+  selected: boolean
+  avatar?: string
+}
+export interface UserCardProps {
+  userCard?: UserCardItem
+  handleClickUserCard?: () => void
 }
 
 const UserCard: React.FC<UserCardProps> = ({
-  username = 'User name',
-  recentMsg = 'Hey!',
-  fromYou = false,
+  userCard = {
+    username: 'User name',
+    recentMsg: 'Hey!',
+    fromMe: false,
+    selected: false,
+  },
+  handleClickUserCard,
 }) => {
-  const [selected, setSelected] = useState(false)
-  const handleClickUserCard = () => {
-    setSelected(true)
-  }
   return (
     <div
       onClick={handleClickUserCard}
-      data-selected={selected}
+      data-selected={userCard.selected}
       className={`userCard`}
     >
-      <Avatar />
+      <Avatar avatarImage={userCard.avatar} />
       <div className={'userCard-textBlock'}>
-        <Text text={username} header={true} type={'4'} />
-        <div>
-          {fromYou ? (
+        <Text text={userCard.username} header={true} type={'4'} />
+        <div className={'userCard-msg'}>
+          {userCard.fromMe ? (
             <Text
               text={'You:\u00A0'}
               type={'2'}
-              color={selected ? '#5E93E7' : '#FFFFFF'}
+              color={userCard.selected ? '#FFFFFF' : '#5E93E7'}
             />
           ) : (
             <></>
           )}
-          <Text text={recentMsg} type={'2'} />
+          <Text text={userCard.recentMsg} type={'2'} />
         </div>
       </div>
     </div>
