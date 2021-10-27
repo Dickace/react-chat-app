@@ -11,6 +11,9 @@
     height: 56px;
     padding-left: 16px;
     padding-right: 16px;
+    &__regular{
+      color: #333333;
+    }
     &__typing{
       border: 1px solid #5C98F1;
     }
@@ -25,10 +28,14 @@
     margin-bottom: 4px;
   }
   &-msg{
-    margin-left: 8px;
-    margin-top: 4px;
+    position: absolute;
+    left: 8px;
+    top: 100%;
     font-size: 13px;
     line-height: 19px;
+    &__regular{
+      color: #5C98F1;
+    }
     &__warning{
       color: yellow;
     }
@@ -42,7 +49,7 @@
     height: 18px;
     width: 18px;
     top: 50%;
+    transform: translate(0, 2px);
     right: 16px;
-    transform: translate(0,-50%);
   }
 }

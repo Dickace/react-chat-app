@@ -1,0 +1,13 @@
+.loginForm{
+  width: max-content;
+  &-inputGroup{
+    margin-top: 48px;
+    margin-bottom: 48px;
+    .inputField{
+      margin-bottom: 32px;
+    }
+    .inputField:last-child{
+      margin-bottom: 0;
+    }
+  }
+}

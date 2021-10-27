@@ -1,5 +1,4 @@
 .button{
-  background: #5C98F1;
   border-radius: 8px;
   color: white;
   height: 56px;
@@ -9,9 +8,14 @@
   text-align: center;
   transition: background-color 0.15s linear;
   cursor: pointer;
-  &__hover{
-    background: #4583DE;
+
+  &__regular{
+    background: #5C98F1;
+    &:hover{
+      background: #4583DE;
+    }
   }
+
   &__inactive{
     background: #D1D1D1;
     cursor: default;

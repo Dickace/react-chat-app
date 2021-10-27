@@ -1,0 +1,14 @@
+.wellcomeTemplate{
+  display: flex;
+  height: 100vh;
+  .loginContainer{
+    flex: 0 0 50%;
+    display: flex;
+    .wellcomeArea{
+      margin: auto;
+    }
+  }
+  .beautyBackground{
+    flex: 0 0 50%;
+  }
+}

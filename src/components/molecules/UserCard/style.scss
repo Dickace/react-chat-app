@@ -1,0 +1,18 @@
+.userCard{
+  display: flex;
+  align-items: center;
+  padding: 12px 0 12px 16px;
+  &[data-selected=true]{
+    background-color: #5C98F1;
+    color: #FFFFFF;
+  }
+  &-textBlock{
+    display: flex;
+    margin-left:12px;
+    flex-direction: column;
+    flex-grow: 1;
+    > p{
+      margin-bottom: 4px;
+    }
+  }
+}

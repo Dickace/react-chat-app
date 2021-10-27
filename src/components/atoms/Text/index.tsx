@@ -2,42 +2,47 @@ import React from 'react'
 import CSS from 'csstype'
 import './style.scss'
 
-interface Props {
+interface TextProps {
   type?: string
   text?: string
   header?: boolean
   size?: string
   weight?: string
+  color?: string
   children?: React.ReactElement | string
 }
 
-const Text: React.FC<Props> = ({
+const Text: React.FC<TextProps> = ({
   header = false,
   type = '1',
-  text = '',
+  text = ' ',
   children,
   size,
   weight,
+  color,
 }) => {
   const styleText: CSS.Properties = {}
   if (size !== undefined) {
-    styleText.fontSize = `${size}px`
+    styleText.fontSize = size
   }
   if (weight !== undefined) {
     styleText.fontWeight = parseInt(weight)
+  }
+  if (color !== undefined) {
+    styleText.color = color
   }
   return (
     <>
       {header ? (
         <p
-          className={`TextBlock-header TextBlock-header__${type}`}
+          className={`textBlock-header textBlock-header__${type}`}
           style={styleText}
         >
           {text}
         </p>
       ) : (
         <p
-          className={`TextBlock-plain TextBlock-plain__${type}`}
+          className={`textBlock-plain textBlock-plain__${type}`}
           style={styleText}
         >
           {text}

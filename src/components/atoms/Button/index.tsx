@@ -1,37 +1,24 @@
 import React, { useState } from 'react'
 import './style.scss'
 
-export interface Props {
+export interface ButtonProps {
   children?: React.ReactElement | string
   text: string
   type?: string
-  onClick?: () => void
+  onClick?: (event: React.FormEvent<HTMLButtonElement>) => void
 }
 
-const Button: React.FC<Props> = ({
+const Button: React.FC<ButtonProps> = ({
   text = '',
-  type = '',
+  type = 'regular',
   onClick,
   children,
 }) => {
-  const [hover, setHover] = useState('')
-  let buttonClassName = 'button'
-  if (type !== '') {
-    buttonClassName += ` button__${type}`
-  }
-  const onMouseLeaveHandler = () => {
-    setHover('')
-  }
-  const onMouseOverHandler = () => {
-    setHover('button__hover')
-  }
   return (
     <button
       type={'button'}
-      className={`${buttonClassName} ${hover}`}
+      className={`button button__${type}`}
       onClick={onClick}
-      onMouseLeave={onMouseLeaveHandler}
-      onMouseEnter={onMouseOverHandler}
     >
       {text}
       {children}
