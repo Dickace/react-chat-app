@@ -1,0 +1,14 @@
+.wellcomeHeader{
+  width: max-content;
+  &-string{
+    display: flex;
+    margin-top: 16px;
+  }
+  &-logo{
+    content: "";
+    height: 43px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 16px;
+  }
+}
