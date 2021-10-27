@@ -1,0 +1,13 @@
+.chatContainer{
+  padding-top: 80px;
+  display: flex;
+  height: calc(100vh - 80px);
+  .userList{
+    width: 25%;
+    height: 100%;
+  }
+  .chatArea{
+    width: 75%;
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,41 @@
+.chatArea{
+  border-left: 1px solid #EFF5FF;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  &-messageList{
+    flex: 1 1 auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    min-height: 100px;
+    .messageBlock{
+      margin-bottom: 34px;
+      max-width: 491px;
+      &__fromChat{
+        margin-right: auto;
+      }
+      &__fromMe{
+        margin-left: auto;
+      }
+      &:first-child{
+        margin-top: 34px;
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #E1ECFE;
+      border-radius: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background-color:  #C5DAFF;
+    }
+  }
+}

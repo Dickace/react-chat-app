@@ -1,0 +1,13 @@
+.chatHeader{
+  border-bottom: 1px solid #D7E6FF;
+  background-color: #FFFFFF;
+  &-nameAndStatus{
+    margin: 24px;
+    p{
+      margin-bottom: 4px;
+      &:last-child{
+        margin-bottom: 0;
+      }
+    }
+  }
+}

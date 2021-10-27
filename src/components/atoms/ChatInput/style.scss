@@ -1,0 +1,25 @@
+.chatInput{
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #D7E6FF;
+  background-color: #FFFFFF;
+  label{
+    display: flex;
+    background-color: #FFFFFF;
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    img{
+      margin: auto;
+    }
+  }
+  &-file, &-submit{
+    display: none;
+  }
+  &-messageInput{
+    flex-grow: 1;
+    height: 100%;
+  }
+}

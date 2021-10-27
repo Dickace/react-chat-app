@@ -1,0 +1,11 @@
+.userList{
+  display: flex;
+  flex-direction: column;
+  &__noUser{
+    align-items: center;
+    justify-content: center;
+    .avatar{
+      margin-bottom: 24px;
+    }
+  }
+}
