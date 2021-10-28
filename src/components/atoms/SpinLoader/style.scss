@@ -1,0 +1,15 @@
+@import './src/assets/additionalStyles/loader';
+
+.spinLoader{
+  &-box{
+    height: 56px;
+    width: 56px;
+    border-radius: 32px;
+    display: flex;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 6%);
+  }
+  &-spinner{
+    margin: auto;
+    @include loader($size: 6px, $color:#4E5A61, $duration: 1s)
+  }
+}
