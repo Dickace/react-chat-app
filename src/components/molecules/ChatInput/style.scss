@@ -9,8 +9,8 @@
     display: flex;
     background-color: #FFFFFF;
     height: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
+    margin-left: 24px;
+    margin-right: 24px;
     img{
       margin: auto;
     }
@@ -21,5 +21,15 @@
   &-messageInput{
     flex-grow: 1;
     height: 100%;
+  }
+  @media (max-width: 768px) {
+    label{
+      margin-left: 18px;
+      margin-right: 13px;
+
+    }
+    &-messageInput{
+      margin-left: 8px;
+    }
   }
 }
