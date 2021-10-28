@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Avatar from '../../atoms/Avatar'
 import Text from '../../atoms/Text'
 import './style.scss'
@@ -8,6 +8,9 @@ export type UserCardItem = {
   fromMe: boolean
   selected: boolean
   avatar?: string
+  chatId?: string
+  lastSeen?: string
+  isOnline?: boolean
 }
 export interface UserCardProps {
   userCard?: UserCardItem
@@ -20,6 +23,7 @@ const UserCard: React.FC<UserCardProps> = ({
     recentMsg: 'Hey!',
     fromMe: false,
     selected: false,
+    chatId: '0',
   },
   handleClickUserCard,
 }) => {

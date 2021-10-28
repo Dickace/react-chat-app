@@ -4,9 +4,13 @@ import Avatar from '../../atoms/Avatar'
 import './style.scss'
 import NoUserIcon from '../../../assets/img/nousericon.svg'
 import Text from '../../atoms/Text'
+import { Link } from 'react-router-dom'
+import { SCREENS } from '../../../routes/endpoints'
 
 interface UserListProps {
   userList?: Array<UserCardItem>
+  userListDisplay?: boolean
+  handleUserCardClick?: () => void
 }
 
 const NoUserIconStyle: React.CSSProperties = {
@@ -15,15 +19,33 @@ const NoUserIconStyle: React.CSSProperties = {
   borderRadius: '100px',
 }
 
-const UserList: React.FC<UserListProps> = ({ userList }) => {
+const UserList: React.FC<UserListProps> = ({
+  userList,
+  userListDisplay = true,
+  handleUserCardClick,
+}) => {
+  const displayStyle: React.CSSProperties = {}
+  if (userListDisplay) {
+    displayStyle.display = 'block'
+  } else {
+    displayStyle.display = 'none'
+  }
   return (
     <>
-      {' '}
-      {userList ? (
-        <div className="userList">
+      {userList?.length !== 0 && userList ? (
+        <div style={displayStyle} className="userList">
           {userList.map((value: UserCardItem, index: number) => {
             return (
-              <UserCard key={`${value.username}${index}`} userCard={value} />
+              <Link
+                key={`${value.chatId}${index}`}
+                to={`${SCREENS.SCREEN_CHAT}/${value.chatId}`}
+              >
+                <UserCard
+                  key={`${value.username}${index}`}
+                  handleClickUserCard={handleUserCardClick}
+                  userCard={value}
+                />
+              </Link>
             )
           })}
         </div>

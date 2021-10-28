@@ -5,16 +5,14 @@ import Button from '../../atoms/Button'
 import './style.scss'
 
 interface LoginFormProps {
-  onSubmit?: () => void
+  handleLoginSubmit: (username: string, password: string) => void
   children?: React.ReactElement | string
 }
 
-const LoginForm: React.FC<LoginFormProps> = (
-  children,
-  onSubmit = () => {
-    return 0
-  }
-) => {
+const LoginForm: React.FC<LoginFormProps> = ({
+  children = '',
+  handleLoginSubmit,
+}) => {
   const [userInputStyle, setUserInputStyle] = useState<string>('regular')
   const [passwordInputStyle, setPasswordInputStyle] =
     useState<string>('regular')
@@ -42,13 +40,12 @@ const LoginForm: React.FC<LoginFormProps> = (
       isValid = false
     }
     if (isValid) {
-      onSubmit()
+      handleLoginSubmit(username, password)
     }
   }
 
   return (
     <form className={'loginForm'}>
-      <Text text={'Please, authorize yourself'} header={true} type={'2'} />
       <div className={'loginForm-inputGroup'}>
         <InputField
           onChange={handleChangeUsername}
@@ -72,6 +69,7 @@ const LoginForm: React.FC<LoginFormProps> = (
           type={'password'}
         />
       </div>
+      {children}
       <Button onClick={handleClickLogin} text={'Log in'} />
     </form>
   )

@@ -15,6 +15,18 @@
     &__4{
       font-size: 15px;
     }
+    @media (max-width: 768px) {
+      &__1{
+        font-size: 27px;
+      }
+      &__2{
+        font-size: 16px;
+      }
+      &__3{
+        font-weight: 700;
+        font-size: 15px;
+      }
+    }
   }
   &-plain{
     cursor: default;
@@ -25,6 +37,14 @@
     }
     &__2{
       font-size: 14px;
+    }
+    @media (max-width: 768px) {
+      &__1{
+        font-size: 14px;
+      }
+      &__2{
+        font-size: 13px;
+      }
     }
   }
 }

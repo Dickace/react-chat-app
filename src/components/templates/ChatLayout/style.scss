@@ -1,13 +1,48 @@
 .chatContainer{
-  padding-top: 80px;
   display: flex;
-  height: calc(100vh - 80px);
+  height: 100vh;
   .userList{
     width: 25%;
     height: 100%;
+    > a:first-child{
+      .userCard{
+        margin-top: 80px;
+      }
+    }
+
   }
-  .chatArea{
+  &-chat{
     width: 75%;
     box-sizing: border-box;
+    border-left: 1px solid #88ABE3;
+    position: relative;
+    > .textBlock-plain{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: max-content;
+      border-radius:  32px;
+      padding: 19px 46px;
+      background-color: rgba(255,255,255,0.5);
+      border: 1px solid #5E93E7;
+    }
+    .chatArea{
+      > div{
+        &:first-child{
+          margin-top: 80px;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .userList{
+      display: none;
+      width: 100%;
+    }
+    .chatContainer-chat{
+
+      width: 100%;
+    }
   }
 }

@@ -1,5 +1,4 @@
 .chatArea{
-  border-left: 1px solid #EFF5FF;
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -7,20 +6,35 @@
     flex: 1 1 auto;
     overflow-y: auto;
     display: flex;
-    flex-direction: column;
+
     overflow-x: hidden;
     min-height: 100px;
+    &__withMsg{
+      flex-direction: column;
+    }
+    &__noMsg{
+      align-items: center;
+      margin: auto;
+      .textBlock-plain{
+        background-color: #FFFFFF;
+        border: 1px solid #D7E6FF;
+        border-radius: 12px;
+        padding:  8px 12px;
+      }
+    }
     .messageBlock{
       margin-bottom: 34px;
       max-width: 491px;
       &__fromChat{
+        margin-left: 30px;
         margin-right: auto;
       }
       &__fromMe{
         margin-left: auto;
+        margin-right: 30px;
       }
       &:first-child{
-        margin-top: 34px;
+        margin-top: auto;
       }
     }
     &::-webkit-scrollbar {
@@ -37,5 +51,18 @@
       border-radius: 12px;
       background-color:  #C5DAFF;
     }
+    @media (max-width: 768px) {
+      .messageBlock{
+        max-width: 336px;
+        margin-bottom: 24px;
+        &__fromChat{
+          margin-left: 19px;
+        }
+        &__fromMe{
+          margin-right: 19px;
+        }
+      }
+    }
   }
+
 }

@@ -1,13 +1,41 @@
 .chatHeader{
   border-bottom: 1px solid #D7E6FF;
   background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  img{
+    display: none;
+  }
   &-nameAndStatus{
-    margin: 24px;
+    margin-left: 24px;
     p{
       margin-bottom: 4px;
       &:last-child{
         margin-bottom: 0;
       }
     }
+  }
+  @media (max-width: 768px) {
+    min-height: 72px;
+    .avatar{
+      height: 40px;
+      width: 40px;
+      margin-left: 24px;
+      margin-right: 12px;
+    }
+    img{
+      display: block;
+      &:first-child{
+        margin-left: 14px;
+      }
+    }
+    &-nameAndStatus{
+      margin-left: 0;
+      .textBlock-plain{
+        font-size: 13px;
+      }
+    }
+
   }
 }

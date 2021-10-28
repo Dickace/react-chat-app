@@ -2,35 +2,42 @@ import React, { createRef, useEffect, useRef } from 'react'
 import Message, { MessageItem } from '../../molecules/Message'
 import Text from '../../atoms/Text'
 import ChatHeader from '../../molecules/ChatHeader'
-import ChatInput from '../../atoms/ChatInput'
-import BeautyBG from '../../../assets/img/chatBeautyBackground.svg'
+import ChatInput from '../../molecules/ChatInput'
 import './style.scss'
+import { UserCardItem } from '../../molecules/UserCard'
 
 interface ChatAreaProps {
   messageList?: Array<MessageItem>
-  children?: React.ReactElement
-  username?: string
-  lastSeen?: string
-  isOnline?: boolean
-  onSendMessage?: () => void
+  chattingUser: UserCardItem
+  handleSendMessage?: () => void
+  handleBackClick?: () => void
 }
 const ChatArea: React.FC<ChatAreaProps> = ({
   messageList,
   children,
-  onSendMessage,
-  username = 'Marina Joe',
-  lastSeen = '3 minute ago',
-  isOnline = false,
+  handleSendMessage,
+  chattingUser,
+  handleBackClick,
 }) => {
   const chatRef: React.RefObject<HTMLDivElement> = createRef<HTMLDivElement>()
+
   useEffect(() => {
     chatRef.current?.scrollTo(0, chatRef.current?.scrollHeight)
-  }, [])
+  }, [chattingUser.chatId])
+
   return (
-    <div style={{ backgroundImage: `url(${BeautyBG})` }} className={'chatArea'}>
-      <ChatHeader username={username} isOnline={isOnline} lastSeen={lastSeen} />
-      <div ref={chatRef} className={'chatArea-messageList'}>
-        {messageList ? (
+    <div className={'chatArea'}>
+      <ChatHeader
+        handleBackClick={handleBackClick}
+        chattingUser={chattingUser}
+      />
+      <div
+        ref={chatRef}
+        className={`chatArea-messageList chatArea-messageList__${
+          messageList?.length !== 0 ? 'withMsg' : 'noMsg'
+        }`}
+      >
+        {messageList?.length !== 0 ? (
           messageList?.map((message: MessageItem, index: number) => {
             return (
               <Message key={`${message.text}${index}`} messageItem={message} />
@@ -41,7 +48,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
         )}
       </div>
       {children}
-      <ChatInput onSubmit={onSendMessage} />
+      <ChatInput onSubmit={handleSendMessage} />
     </div>
   )
 }

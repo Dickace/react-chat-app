@@ -1,12 +1,10 @@
 import React from 'react'
-import './normalize.css'
+import './assets/additionalStyles/normalize.css'
 import './App.css'
-import LoginForm from './components/molecules/LoginForm'
-import WellcomeHeader from './components/molecules/WellcomeHeader'
-import Index from './components/organisms/WellcomeArea'
-import Index from './components/templates/LoginLayout'
-import Avatar from './components/atoms/Avatar'
-import UserCard from './components/molecules/UserCard'
+import Routes from './routes'
+import { BrowserRouter } from 'react-router-dom'
+import SpinLoader from './components/atoms/SpinLoader'
+
 function App() {
   const clickHandler = () => {
     console.log('empty')
@@ -14,9 +12,12 @@ function App() {
 
   return (
     <div className="App">
-      <UserCard selected={true} />
-      <UserCard />
-      <UserCard />
+      {/*<BrowserRouter>*/}
+      {/*  <Routes/>*/}
+      {/*</BrowserRouter>*/}
+      <div>
+        <SpinLoader />
+      </div>
     </div>
   )
 }

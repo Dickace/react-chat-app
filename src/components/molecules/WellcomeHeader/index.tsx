@@ -16,6 +16,7 @@ const WellcomeHeader: React.FC<WellcomeHeaderProps> = (children) => {
         <Text text={'Chatty'} header={true} type={'1'} color={'#5E93E7'} />
         <Text text={'!'} header={true} type={'1'} color={'#B3CDF8'} />
       </div>
+      <Text text={'Please, authorize yourself'} header={true} type={'2'} />
     </div>
   )
 }

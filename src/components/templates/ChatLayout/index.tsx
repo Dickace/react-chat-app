@@ -5,22 +5,59 @@ import './style.scss'
 import ChatArea from '../../organisms/ChatArea'
 import { UserCardItem } from '../../molecules/UserCard'
 import { MessageItem } from '../../molecules/Message'
+import BeautyBG from '../../../assets/img/chatBeautyBackground.svg'
+import Text from '../../atoms/Text'
 
 interface ChatLayoutProps {
-  ContactList?: Array<UserCardItem>
+  ContactList: Array<UserCardItem>
   MessageList?: Array<MessageItem>
+  chatId?: string
+  chattingUser: UserCardItem
+  userListDisplay?: boolean
+  chatAreaDisplay?: boolean
+  handleBackClick?: () => void
+  handleUserCardClick?: () => void
 }
 
 const ChatLayout: React.FC<ChatLayoutProps> = ({
   ContactList,
   MessageList,
+  chatId,
+  chattingUser,
+  userListDisplay,
+  chatAreaDisplay,
+  handleBackClick,
+  handleUserCardClick,
 }) => {
+  const displayStyle: React.CSSProperties = {
+    backgroundImage: `url(${BeautyBG})`,
+  }
+  if (chatAreaDisplay) {
+    displayStyle.display = 'block'
+  } else {
+    displayStyle.display = 'none'
+  }
+
   return (
     <>
       <AppHeader />
       <section className={'chatContainer'}>
-        <UserList userList={ContactList} />
-        <ChatArea messageList={MessageList} />
+        <UserList
+          handleUserCardClick={handleUserCardClick}
+          userListDisplay={userListDisplay}
+          userList={ContactList}
+        />
+        <div className={'chatContainer-chat'} style={displayStyle}>
+          {chatId !== undefined ? (
+            <ChatArea
+              handleBackClick={handleBackClick}
+              chattingUser={chattingUser}
+              messageList={MessageList}
+            />
+          ) : (
+            <Text text={'Select a chat to stray messaging'} />
+          )}
+        </div>
       </section>
     </>
   )
