@@ -3,7 +3,6 @@ import './assets/additionalStyles/normalize.css'
 import './App.css'
 import Routes from './routes'
 import { BrowserRouter } from 'react-router-dom'
-import SpinLoader from './components/atoms/SpinLoader'
 
 function App() {
   const clickHandler = () => {
