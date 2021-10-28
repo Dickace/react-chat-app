@@ -12,12 +12,12 @@ function App() {
 
   return (
     <div className="App">
-      {/*<BrowserRouter>*/}
-      {/*  <Routes/>*/}
-      {/*</BrowserRouter>*/}
-      <div>
-        <SpinLoader />
-      </div>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+      {/*<div>*/}
+      {/*  <SpinLoader />*/}
+      {/*</div>*/}
     </div>
   )
 }
