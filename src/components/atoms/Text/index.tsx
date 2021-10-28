@@ -1,5 +1,4 @@
 import React from 'react'
-import CSS from 'csstype'
 import './style.scss'
 
 interface TextProps {
@@ -21,7 +20,7 @@ const Text: React.FC<TextProps> = ({
   weight,
   color,
 }) => {
-  const styleText: CSS.Properties = {}
+  const styleText: React.CSSProperties = {}
   if (size !== undefined) {
     styleText.fontSize = size
   }

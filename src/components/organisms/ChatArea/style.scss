@@ -1,0 +1,68 @@
+.chatArea{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  &-messageList{
+    flex: 1 1 auto;
+    overflow-y: auto;
+    display: flex;
+
+    overflow-x: hidden;
+    min-height: 100px;
+    &__withMsg{
+      flex-direction: column;
+    }
+    &__noMsg{
+      align-items: center;
+      margin: auto;
+      .textBlock-plain{
+        background-color: #FFFFFF;
+        border: 1px solid #D7E6FF;
+        border-radius: 12px;
+        padding:  8px 12px;
+      }
+    }
+    .messageBlock{
+      margin-bottom: 34px;
+      max-width: 491px;
+      &__fromChat{
+        margin-left: 30px;
+        margin-right: auto;
+      }
+      &__fromMe{
+        margin-left: auto;
+        margin-right: 30px;
+      }
+      &:first-child{
+        margin-top: auto;
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 6px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #E1ECFE;
+      border-radius: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 12px;
+      background-color:  #C5DAFF;
+    }
+    @media (max-width: 768px) {
+      .messageBlock{
+        max-width: 336px;
+        margin-bottom: 24px;
+        &__fromChat{
+          margin-left: 19px;
+        }
+        &__fromMe{
+          margin-right: 19px;
+        }
+      }
+    }
+  }
+
+}

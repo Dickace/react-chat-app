@@ -11,4 +11,30 @@
   .beautyBackground{
     flex: 0 0 50%;
   }
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    .loginContainer{
+      flex: 0 0 56%;
+      .wellcomeArea{
+        position: relative;
+        margin-top: 27px;
+        .wellcomeHeader{
+          position: absolute;
+          top: -48px;
+          transform: translate(0, -100%);
+          &-string{
+            margin-bottom: 8px;
+          }
+        }
+        .loginForm{
+          button{
+            width: 100%;
+          }
+        }
+      }
+    }
+    .beautyBackground{
+      flex: 0 0 44%;
+    }
+  }
 }

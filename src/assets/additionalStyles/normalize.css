@@ -76,6 +76,14 @@ pre {
 a {
   background-color: transparent;
 }
+a:-webkit-any-link:active {
+  color: none;
+}
+a:-webkit-any-link {
+  color: inherit;
+  cursor: inherit;
+  text-decoration: none;
+}
 
 /**
  * 1. Remove the bottom border in Chrome 57-
