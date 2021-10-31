@@ -13,8 +13,7 @@ interface ChatLayoutProps {
   MessageList?: Array<MessageItem>
   chatId?: string
   chattingUser: UserCardItem
-  userListDisplay?: boolean
-  chatAreaDisplay?: boolean
+  chatDisplay?: boolean
   handleBackClick?: () => void
   handleUserCardClick?: () => void
 }
@@ -24,27 +23,26 @@ const ChatLayout: React.FC<ChatLayoutProps> = ({
   MessageList,
   chatId,
   chattingUser,
-  userListDisplay,
-  chatAreaDisplay,
+  chatDisplay,
   handleBackClick,
   handleUserCardClick,
 }) => {
   const displayStyle: React.CSSProperties = {
     backgroundImage: `url(${BeautyBG})`,
   }
-  if (chatAreaDisplay) {
-    displayStyle.display = 'block'
+  const chatSlider: React.CSSProperties = {}
+  if (chatDisplay) {
+    chatSlider.marginLeft = '-100%'
   } else {
-    displayStyle.display = 'none'
+    chatSlider.marginLeft = '0'
   }
 
   return (
     <>
       <AppHeader />
-      <section className={'chatContainer'}>
+      <section style={chatSlider} className={'chatContainer'}>
         <UserList
           handleUserCardClick={handleUserCardClick}
-          userListDisplay={userListDisplay}
           userList={ContactList}
         />
         <div className={'chatContainer-chat'} style={displayStyle}>

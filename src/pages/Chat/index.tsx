@@ -14,23 +14,19 @@ const Chat: React.FC = () => {
   const { chatId } = useParams<{ chatId?: string }>()
   let id: string | undefined = chatId
 
-  const [userListDisplay, setListDisplay] = useState<boolean>(true)
-  const [chatAreaDisplay, setChatAreaDisplay] = useState<boolean>(true)
+  const [chatDisplay, setChatDisplay] = useState<boolean>(false)
 
   const handleBackClick = () => {
-    setChatAreaDisplay(false)
-    setListDisplay(true)
+    setChatDisplay(false)
   }
 
   const handleUserCardClick = () => {
     if (window.matchMedia('(max-width: 768px)').matches) {
-      setChatAreaDisplay(true)
-      setListDisplay(false)
+      setChatDisplay(true)
     }
   }
   useEffect(() => {
-    if (window.matchMedia('(max-width: 768px)').matches)
-      setChatAreaDisplay(false)
+    if (window.matchMedia('(max-width: 768px)').matches) setChatDisplay(false)
   }, [])
   //Ducks start
   const User1: UserCardItem = {
@@ -188,8 +184,7 @@ const Chat: React.FC = () => {
     <ChatLayout
       handleUserCardClick={handleUserCardClick}
       handleBackClick={handleBackClick}
-      chatAreaDisplay={chatAreaDisplay}
-      userListDisplay={userListDisplay}
+      chatDisplay={chatDisplay}
       chatId={id}
       chattingUser={ChattingUser}
       MessageList={MessageList}

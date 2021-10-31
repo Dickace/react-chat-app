@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Text from '../../atoms/Text'
 import './style.scss'
 import FileIcon, { File } from '../../atoms/FileIcon'

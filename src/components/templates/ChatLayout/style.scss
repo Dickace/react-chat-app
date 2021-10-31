@@ -1,6 +1,7 @@
 .chatContainer{
   display: flex;
   height: 100vh;
+  transition: margin-left 0.3s ease-in-out;
   .userList{
     width: 25%;
     height: 100%;
@@ -36,6 +37,7 @@
     }
   }
   @media (max-width: 768px) {
+    width: 200%;
     .userList{
       display: none;
       width: 100%;
