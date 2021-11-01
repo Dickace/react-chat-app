@@ -9,14 +9,14 @@ interface WellcomeHeaderProps {
 
 const WellcomeHeader: React.FC<WellcomeHeaderProps> = (children) => {
   return (
-    <div className={'wellcomeHeader'}>
+    <div className="wellcomeHeader">
       <AppLogo />
-      <div className={'wellcomeHeader-string'}>
-        <Text text={'Wellcome to\u00A0'} type={'1'} header={true} />
-        <Text text={'Chatty'} header={true} type={'1'} color={'#5E93E7'} />
-        <Text text={'!'} header={true} type={'1'} color={'#B3CDF8'} />
+      <div className="wellcomeHeader-string">
+        <Text text="Wellcome to&nbsp;" type="1" isHeader />
+        <Text text="Chatty" isHeader type="1" color="#5E93E7" />
+        <Text text="!" isHeader type="1" color="#B3CDF8" />
       </div>
-      <Text text={'Please, authorize yourself'} header={true} type={'2'} />
+      <Text text="Please, authorize yourself" isHeader type="2" />
     </div>
   )
 }

@@ -9,7 +9,7 @@ interface WellcomeAreaProps {
 
 const WellcomeArea: React.FC<WellcomeAreaProps> = ({ handleLoginSubmit }) => {
   return (
-    <div className={'wellcomeArea'}>
+    <div className="wellcomeArea">
       <WellcomeHeader />
       <LoginForm handleLoginSubmit={handleLoginSubmit} />
     </div>

@@ -8,7 +8,6 @@ const Authorization: React.FC = () => {
 
   const handleLoginSubmit = (username: string, password: string) => {
     history.push(`${SCREENS.SCREEN_CHAT}`, { from: `${SCREENS.SCREEN_LOGIN}` })
-    window.location.reload()
   }
 
   return <LoginLayout handleLoginSubmit={handleLoginSubmit} />

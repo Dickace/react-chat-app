@@ -4,7 +4,7 @@ import './style.scss'
 interface TextProps {
   type?: string
   text?: string
-  header?: boolean
+  isHeader?: boolean
   size?: string
   weight?: string
   color?: string
@@ -12,7 +12,7 @@ interface TextProps {
 }
 
 const Text: React.FC<TextProps> = ({
-  header = false,
+  isHeader = false,
   type = '1',
   text = ' ',
   children,
@@ -32,7 +32,7 @@ const Text: React.FC<TextProps> = ({
   }
   return (
     <>
-      {header ? (
+      {isHeader ? (
         <p
           className={`textBlock-header textBlock-header__${type}`}
           style={styleText}

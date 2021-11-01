@@ -18,3 +18,11 @@ input {
   outline: none;
   border: none;
 }
+a:-webkit-any-link:active {
+  color: none;
+}
+a:-webkit-any-link {
+  color: inherit;
+  cursor: inherit;
+  text-decoration: none;
+}

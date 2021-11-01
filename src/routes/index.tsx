@@ -10,10 +10,10 @@ const Routes: React.FC = () => {
       <Route path={SCREENS.SCREEN_LOGIN} exact>
         <Authorization />
       </Route>
-      <Route path={`${SCREENS.SCREEN_CHAT}`} exact>
+      <Route path={SCREENS.SCREEN_CHAT} exact>
         <Chat />
       </Route>
-      <Route path={`${SCREENS.SCREEN_CHAT}/:chatId(\\d+)`}>
+      <Route path={SCREENS.SCREEN_CONVERSATION}>
         <Chat />
       </Route>
       <Redirect to={SCREENS.SCREEN_LOGIN} />

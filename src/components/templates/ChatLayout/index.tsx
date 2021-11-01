@@ -13,7 +13,7 @@ interface ChatLayoutProps {
   MessageList?: Array<MessageItem>
   chatId?: string
   chattingUser: UserCardItem
-  chatDisplay?: boolean
+  isChatDisplay?: boolean
   handleBackClick?: () => void
   handleUserCardClick?: () => void
 }
@@ -23,7 +23,7 @@ const ChatLayout: React.FC<ChatLayoutProps> = ({
   MessageList,
   chatId,
   chattingUser,
-  chatDisplay,
+  isChatDisplay,
   handleBackClick,
   handleUserCardClick,
 }) => {
@@ -31,7 +31,7 @@ const ChatLayout: React.FC<ChatLayoutProps> = ({
     backgroundImage: `url(${BeautyBG})`,
   }
   const chatSlider: React.CSSProperties = {}
-  if (chatDisplay) {
+  if (isChatDisplay) {
     chatSlider.marginLeft = '-100%'
   } else {
     chatSlider.marginLeft = '0'
@@ -40,12 +40,12 @@ const ChatLayout: React.FC<ChatLayoutProps> = ({
   return (
     <>
       <AppHeader />
-      <section style={chatSlider} className={'chatContainer'}>
+      <section style={chatSlider} className="chatContainer">
         <UserList
           handleUserCardClick={handleUserCardClick}
           userList={ContactList}
         />
-        <div className={'chatContainer-chat'} style={displayStyle}>
+        <div className="chatContainer-chat" style={displayStyle}>
           {chatId !== undefined ? (
             <ChatArea
               handleBackClick={handleBackClick}
@@ -53,7 +53,7 @@ const ChatLayout: React.FC<ChatLayoutProps> = ({
               messageList={MessageList}
             />
           ) : (
-            <Text text={'Select a chat to stray messaging'} />
+            <Text text="Select a chat to stray messaging" />
           )}
         </div>
       </section>

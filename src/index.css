@@ -1,3 +1,45 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat'),
+    url(./assets/fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 300;
+  src: local('Montserrat'),
+    url(./assets/fonts/Montserrat/Montserrat-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  src: local('Montserrat'),
+    url(./assets/fonts/Montserrat/Montserrat-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  src: local('Montserrat'),
+    url(./assets/fonts/Montserrat/Montserrat-SemiBold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  src: local('Montserrat'),
+    url(./assets/fonts/Montserrat/Montserrat-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 800;
+  src: local('Montserrat'),
+    url(./assets/fonts/Montserrat/Montserrat-ExtraBold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 900;
+  src: local('Montserrat'),
+    url(./assets/fonts/Montserrat/Montserrat-Black.ttf) format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

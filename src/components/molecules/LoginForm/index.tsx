@@ -45,8 +45,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
   }
 
   return (
-    <form className={'loginForm'}>
-      <div className={'loginForm-inputGroup'}>
+    <form className="loginForm">
+      <div className="loginForm-inputGroup">
         <InputField
           onChange={handleChangeUsername}
           handleStyleChange={setUserInputStyle}
@@ -54,8 +54,8 @@ const LoginForm: React.FC<LoginFormProps> = ({
           msg={usernameErrorMsg}
           style={userInputStyle}
           value={username}
-          placeholder={'Input user name'}
-          label={'User name'}
+          placeholder="Input user name"
+          label="User name"
         />
         <InputField
           onChange={handleChangePassword}
@@ -64,13 +64,13 @@ const LoginForm: React.FC<LoginFormProps> = ({
           msg={passwordErrorMsg}
           style={passwordInputStyle}
           value={password}
-          placeholder={'Input password'}
-          label={'Input password'}
-          type={'password'}
+          placeholder="Input password"
+          label="Input password"
+          type="password"
         />
       </div>
       {children}
-      <Button onClick={handleClickLogin} text={'Log in'} />
+      <Button onClick={handleClickLogin} text="Log in" />
     </form>
   )
 }

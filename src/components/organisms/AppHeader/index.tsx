@@ -9,7 +9,7 @@ const AppHeader = () => {
     boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.08)',
   }
   return (
-    <header className={'appheader'}>
+    <header className="appheader">
       <AppLogo />
       <Avatar avatarImage={AccountIcon} style={AvatarStyle} />
     </header>
