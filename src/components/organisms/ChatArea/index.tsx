@@ -26,7 +26,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
   }, [chattingUser.chatId])
 
   return (
-    <div className={'chatArea'}>
+    <div className="chatArea">
       <ChatHeader
         handleBackClick={handleBackClick}
         chattingUser={chattingUser}
@@ -44,7 +44,7 @@ const ChatArea: React.FC<ChatAreaProps> = ({
             )
           })
         ) : (
-          <Text text={'Write first'} />
+          <Text text="Write first" />
         )}
       </div>
       {children}

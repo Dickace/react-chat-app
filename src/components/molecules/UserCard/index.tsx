@@ -5,8 +5,8 @@ import './style.scss'
 export type UserCardItem = {
   username: string
   recentMsg: string
-  fromMe: boolean
-  selected: boolean
+  isFromMe: boolean
+  isSelected: boolean
   avatar?: string
   chatId?: string
   lastSeen?: string
@@ -21,7 +21,7 @@ const UserCard: React.FC<UserCardProps> = ({
   userCard = {
     username: 'User name',
     recentMsg: 'Hey!',
-    fromMe: false,
+    isFromMe: false,
     selected: false,
     chatId: '0',
   },
@@ -30,23 +30,21 @@ const UserCard: React.FC<UserCardProps> = ({
   return (
     <div
       onClick={handleClickUserCard}
-      data-selected={userCard.selected}
+      data-selected={userCard.isSelected}
       className={`userCard`}
     >
       <Avatar avatarImage={userCard.avatar} />
-      <div className={'userCard-textBlock'}>
-        <Text text={userCard.username} header={true} type={'4'} />
-        <div className={'userCard-msg'}>
-          {userCard.fromMe ? (
+      <div className="userCard-textBlock">
+        <Text text={userCard.username} isHeader type="4" />
+        <div className="userCard-msg">
+          {userCard.isFromMe ? (
             <Text
-              text={'You:\u00A0'}
-              type={'2'}
-              color={userCard.selected ? '#FFFFFF' : '#5E93E7'}
+              text="You:&nbsp;"
+              type="2"
+              color={userCard.isSelected ? '#FFFFFF' : '#5E93E7'}
             />
-          ) : (
-            <></>
-          )}
-          <Text text={userCard.recentMsg} type={'2'} />
+          ) : null}
+          <Text text={userCard.recentMsg} type="2" />
         </div>
       </div>
     </div>

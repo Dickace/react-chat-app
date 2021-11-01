@@ -5,6 +5,7 @@ import { UserCardItem } from '../UserCard'
 import DefaultAvatar from '../../../assets/img/defaultAvatar.svg'
 import Avatar from '../../atoms/Avatar'
 import BackIcon from '../../../assets/img/backIcon.svg'
+import { catchFileNameFromPath } from '../../../assets/additionalFuntions'
 
 interface ChatHeaderProps {
   chattingUser?: UserCardItem
@@ -21,18 +22,22 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
   handleBackClick,
 }) => {
   return (
-    <div className={'chatHeader'}>
-      <img onClick={handleBackClick} src={BackIcon} alt={'backIcon'} />
+    <div className="chatHeader">
+      <img
+        onClick={handleBackClick}
+        src={BackIcon}
+        alt={catchFileNameFromPath(BackIcon)}
+      />
       <Avatar avatarImage={DefaultAvatar} />
-      <div className={'chatHeader-nameAndStatus'}>
-        <Text text={chattingUser.username} header={true} type={'3'} />
+      <div className="chatHeader-nameAndStatus">
+        <Text text={chattingUser.username} isHeader type="3" />
         <Text
           text={
             chattingUser.isOnline
               ? 'Online'
               : `Last seen ${chattingUser.lastSeen}`
           }
-          color={'#949494'}
+          color="#949494"
         />
       </div>
     </div>

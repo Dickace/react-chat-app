@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import ChatLayout from '../../components/templates/ChatLayout'
-import { Route, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { UserCardItem } from '../../components/molecules/UserCard'
 import { MessageItem } from '../../components/molecules/Message'
-import { SCREENS } from '../../routes/endpoints'
 import { File } from '../../components/atoms/FileIcon'
 import Picture from '../../assets/img/Vasserman_logo.jpg'
 import Gachi from '../../assets/img/gachi-fist.gif'
@@ -14,30 +13,26 @@ const Chat: React.FC = () => {
   const { chatId } = useParams<{ chatId?: string }>()
   let id: string | undefined = chatId
 
-  const [userListDisplay, setListDisplay] = useState<boolean>(true)
-  const [chatAreaDisplay, setChatAreaDisplay] = useState<boolean>(true)
+  const [isChatDisplay, setIsChatDisplay] = useState<boolean>(false)
 
   const handleBackClick = () => {
-    setChatAreaDisplay(false)
-    setListDisplay(true)
+    setIsChatDisplay(false)
   }
 
   const handleUserCardClick = () => {
     if (window.matchMedia('(max-width: 768px)').matches) {
-      setChatAreaDisplay(true)
-      setListDisplay(false)
+      setIsChatDisplay(true)
     }
   }
   useEffect(() => {
-    if (window.matchMedia('(max-width: 768px)').matches)
-      setChatAreaDisplay(false)
+    if (window.matchMedia('(max-width: 768px)').matches) setIsChatDisplay(false)
   }, [])
   //Ducks start
   const User1: UserCardItem = {
     username: 'Konstantin Konstantinopolski',
     recentMsg: 'Hey!',
-    fromMe: false,
-    selected: false,
+    isFromMe: false,
+    isSelected: false,
     chatId: '1',
     lastSeen: '6 minute ago',
     isOnline: false,
@@ -45,8 +40,8 @@ const Chat: React.FC = () => {
   const User2: UserCardItem = {
     username: 'Marina Joe',
     recentMsg: 'Sed ut per...',
-    fromMe: true,
-    selected: false,
+    isFromMe: true,
+    isSelected: false,
     chatId: '2',
     lastSeen: '3 minute ago',
     isOnline: true,
@@ -54,8 +49,8 @@ const Chat: React.FC = () => {
   const User3: UserCardItem = {
     username: 'Ernest Gillroy',
     recentMsg: 'How are you doing?',
-    fromMe: true,
-    selected: false,
+    isFromMe: true,
+    isSelected: false,
     chatId: '3',
     lastSeen: '2 minute ago',
     isOnline: false,
@@ -63,8 +58,8 @@ const Chat: React.FC = () => {
   const User4: UserCardItem = {
     username: 'Konstantin Konstantinopolski',
     recentMsg: 'Hey!',
-    fromMe: false,
-    selected: false,
+    isFromMe: false,
+    isSelected: false,
     chatId: '4',
     lastSeen: '3 minute ago',
     isOnline: true,
@@ -101,45 +96,45 @@ const Chat: React.FC = () => {
   }
   const Message1: MessageItem = {
     text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
-    fromMe: false,
+    isFromMe: false,
     files: [],
   }
   const Message2: MessageItem = {
     text: 'SeSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.  accusantium doloremque laudantium, totam re',
-    fromMe: true,
+    isFromMe: true,
     files: [],
   }
   const Message3: MessageItem = {
     text: 'SeSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-    fromMe: false,
+    isFromMe: false,
     files: [],
   }
   const Message4: MessageItem = {
     text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusanti',
-    fromMe: true,
+    isFromMe: true,
     files: [],
   }
   const Message5: MessageItem = {
     text: '',
-    fromMe: true,
+    isFromMe: true,
     files: [file1],
   }
   const Message7: MessageItem = {
     text: '',
-    fromMe: false,
+    isFromMe: false,
     files: [file3, file4, file5],
   }
   const Message6: MessageItem = {
     text: '',
-    fromMe: true,
+    isFromMe: true,
     files: [file2],
   }
   let MessageList: Array<MessageItem> = []
   let ChattingUser: UserCardItem = {
     username: 'Marina Joe',
     recentMsg: 'Sed ut per...',
-    fromMe: true,
-    selected: false,
+    isFromMe: true,
+    isSelected: false,
     chatId: '2',
     lastSeen: '3 minute ago',
     isOnline: false,
@@ -148,7 +143,7 @@ const Chat: React.FC = () => {
   //Ducks end
   ContactList.forEach((value) => {
     if (value.chatId === chatId) {
-      value.selected = true
+      value.isSelected = true
       ChattingUser = value
       return
     }
@@ -188,8 +183,7 @@ const Chat: React.FC = () => {
     <ChatLayout
       handleUserCardClick={handleUserCardClick}
       handleBackClick={handleBackClick}
-      chatAreaDisplay={chatAreaDisplay}
-      userListDisplay={userListDisplay}
+      isChatDisplay={isChatDisplay}
       chatId={id}
       chattingUser={ChattingUser}
       MessageList={MessageList}

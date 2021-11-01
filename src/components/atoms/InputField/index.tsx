@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './style.scss'
 import InfoIcon from '../../../assets/img/info.svg'
+import { catchFileNameFromPath } from '../../../assets/additionalFuntions'
 
 type Props = {
   placeholder: string
@@ -39,8 +40,8 @@ const InputField: React.FC<Props> = ({
 
   return (
     <>
-      <label className={'inputField'}>
-        <span className={'inputField-label'}>{label}</span>
+      <label className="inputField">
+        <span className="inputField-label">{label}</span>
         <input
           className={`inputField-input inputField-input__${style}`}
           value={value}
@@ -52,12 +53,14 @@ const InputField: React.FC<Props> = ({
         />
         {msg ? (
           <>
-            <img className={'inputField-msgIcon'} src={InfoIcon} alt={'none'} />
+            <img
+              className="inputField-msgIcon"
+              src={InfoIcon}
+              alt={catchFileNameFromPath(InfoIcon)}
+            />
             <p className={`inputField-msg inputField-msg__${style}`}>{msg}</p>
           </>
-        ) : (
-          <></>
-        )}
+        ) : null}
       </label>
       {children}
     </>

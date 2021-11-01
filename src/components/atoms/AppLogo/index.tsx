@@ -1,11 +1,14 @@
 import ChatLogo from '../../../assets/img/chatlogo.svg'
 import React from 'react'
+import { catchFileNameFromPath } from '../../../assets/additionalFuntions'
 
-interface AppLogoProps {
-  alt?: string
-}
-
-const AppLogo: React.FC<AppLogoProps> = ({ alt = 'none' }) => {
-  return <img className={'applogo'} src={ChatLogo} alt={alt} />
+const AppLogo: React.FC = () => {
+  return (
+    <img
+      className="applogo"
+      src={ChatLogo}
+      alt={catchFileNameFromPath(ChatLogo)}
+    />
+  )
 }
 export default AppLogo
