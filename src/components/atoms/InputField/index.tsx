@@ -2,40 +2,34 @@ import React from 'react'
 import './style.scss'
 import InfoIcon from '../../../assets/img/info.svg'
 import { catchFileNameFromPath } from '../../../assets/additionalFuntions'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
-type Props = {
+type InputFieldsProps = {
+  handleChangeStyle: (state: string) => void
   placeholder: string
   label: string
   type?: string
-  layoutType?: string
   style?: string
   msg?: string
-  value?: string
-  handleStyleChange: (style: string) => void
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
-  handleMsg: (msg: string) => void
   children?: React.ReactElement | string
+  registerInput: UseFormRegisterReturn
 }
 
-const InputField: React.FC<Props> = ({
+const InputField: React.FC<InputFieldsProps> = ({
   placeholder = 'InputText',
   label = 'Input field',
   type = 'text',
   style = 'regular',
-  value = '',
-  onChange,
   msg = '',
   children,
-  handleStyleChange,
-  handleMsg,
+  registerInput,
+  handleChangeStyle,
 }) => {
-  const handleFocus = () => {
-    handleMsg('')
-    handleStyleChange('typing')
+  const handleBlurInput = () => {
+    handleChangeStyle('regular')
   }
-  const handleBlur = () => {
-    handleMsg('')
-    handleStyleChange('regular')
+  const handleFocusInput = () => {
+    handleChangeStyle('typing')
   }
 
   return (
@@ -43,13 +37,12 @@ const InputField: React.FC<Props> = ({
       <label className="inputField">
         <span className="inputField-label">{label}</span>
         <input
+          {...registerInput}
           className={`inputField-input inputField-input__${style}`}
-          value={value}
           type={type}
+          onFocus={handleFocusInput}
+          onBlur={handleBlurInput}
           placeholder={placeholder}
-          onChange={onChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
         />
         {msg ? (
           <>
@@ -58,7 +51,7 @@ const InputField: React.FC<Props> = ({
               src={InfoIcon}
               alt={catchFileNameFromPath(InfoIcon)}
             />
-            <p className={`inputField-msg inputField-msg__${style}`}>{msg}</p>
+            <p className={`inputField-msg inputField-msg__error`}>{msg}</p>
           </>
         ) : null}
       </label>

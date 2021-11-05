@@ -1,76 +1,76 @@
 import React, { useState } from 'react'
-import Text from '../../atoms/Text'
 import InputField from '../../atoms/InputField'
 import Button from '../../atoms/Button'
 import './style.scss'
+import Captcha from '../../atoms/Captcha'
+import * as yup from 'yup'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import Text from '../../atoms/Text'
+import { $LoginForm } from '../../../store/loginForm'
+import { useStore } from 'effector-react'
 
 interface LoginFormProps {
-  handleLoginSubmit: (username: string, password: string) => void
   children?: React.ReactElement | string
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
-  children = '',
-  handleLoginSubmit,
-}) => {
+export interface ILoginFormInputs {
+  login: string
+  password: string
+  captcha: string
+}
+const loginSchema = yup
+  .object({
+    login: yup.string().required(),
+    password: yup.string().required(),
+    captcha: yup.string().required(),
+  })
+  .required()
+
+const LoginForm: React.FC<LoginFormProps> = ({ children = '' }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginFormInputs>({
+    resolver: yupResolver(loginSchema),
+  })
+  const loginForm = useStore($LoginForm)
+
   const [userInputStyle, setUserInputStyle] = useState<string>('regular')
   const [passwordInputStyle, setPasswordInputStyle] =
     useState<string>('regular')
-  const [username, setUsername] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [usernameErrorMsg, setUsernameErrorMsg] = useState<string>('')
-  const [passwordErrorMsg, setPasswordErrorMsg] = useState<string>('')
-  const handleChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {
-    setUsername(event.currentTarget.value)
-  }
-  const handleChangePassword = (event: React.FormEvent<HTMLInputElement>) => {
-    setPassword(event.currentTarget.value)
-  }
-  const handleClickLogin = (event: React.FormEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    let isValid = true
-    if (username.length < 2) {
-      setUserInputStyle('error')
-      setUsernameErrorMsg('Must be more than two sign')
-      isValid = false
-    }
-    if (password.length < 2) {
-      setPasswordInputStyle('error')
-      setPasswordErrorMsg('Must be more than two sign')
-      isValid = false
-    }
-    if (isValid) {
-      handleLoginSubmit(username, password)
-    }
-  }
 
   return (
-    <form className="loginForm">
+    <form
+      className="loginForm"
+      onSubmit={handleSubmit(loginForm.handleLoginSubmit)}
+    >
       <div className="loginForm-inputGroup">
         <InputField
-          onChange={handleChangeUsername}
-          handleStyleChange={setUserInputStyle}
-          handleMsg={setUsernameErrorMsg}
-          msg={usernameErrorMsg}
+          handleChangeStyle={setUserInputStyle}
+          msg={errors.login?.message}
+          registerInput={register('login')}
           style={userInputStyle}
-          value={username}
           placeholder="Input user name"
           label="User name"
         />
         <InputField
-          onChange={handleChangePassword}
-          handleStyleChange={setPasswordInputStyle}
-          handleMsg={setPasswordErrorMsg}
-          msg={passwordErrorMsg}
+          handleChangeStyle={setPasswordInputStyle}
+          msg={errors.password?.message}
+          registerInput={register('password')}
           style={passwordInputStyle}
-          value={password}
           placeholder="Input password"
           label="Input password"
           type="password"
         />
+        <Captcha registerInput={register('captcha')} />
       </div>
       {children}
-      <Button onClick={handleClickLogin} text="Log in" />
+      {loginForm.formError ? (
+        <Text text={loginForm.formError} color="red" />
+      ) : null}
+      <Button type="submit" text="Log in" />
     </form>
   )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ChatLayout from '../../components/templates/ChatLayout'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { UserCardItem } from '../../components/molecules/UserCard'
 import { MessageItem } from '../../components/molecules/Message'
 import { File } from '../../components/atoms/FileIcon'
@@ -8,8 +8,24 @@ import Picture from '../../assets/img/Vasserman_logo.jpg'
 import Gachi from '../../assets/img/gachi-fist.gif'
 import Aska from '../../assets/img/evangelion-smug.gif'
 import Rick from '../../assets/img/funny-animals.gif'
+import { SCREENS } from '../../routes/endpoints'
 
 const Chat: React.FC = () => {
+  const history = useHistory()
+  let connectKey: string | null = null
+  if (localStorage.getItem('websocket') === undefined) {
+    history.push(`${SCREENS.SCREEN_LOGIN}`)
+  } else {
+    connectKey = localStorage.getItem('websocket')
+    if (connectKey) {
+      connectKey = connectKey.replaceAll('"', '')
+    } else {
+      history.push(`${SCREENS.SCREEN_LOGIN}`)
+    }
+  }
+  const websocket = new WebSocket(
+    `ws://109.194.37.212:2346/?type=dickace&ws_id=${connectKey}`
+  )
   const { chatId } = useParams<{ chatId?: string }>()
   let id: string | undefined = chatId
 
@@ -26,7 +42,11 @@ const Chat: React.FC = () => {
   }
   useEffect(() => {
     if (window.matchMedia('(max-width: 768px)').matches) setIsChatDisplay(false)
+    websocket.onmessage = function (msg) {
+      console.log(JSON.stringify(msg))
+    }
   }, [])
+
   //Ducks start
   const User1: UserCardItem = {
     username: 'Konstantin Konstantinopolski',
