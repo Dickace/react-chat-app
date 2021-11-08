@@ -9,9 +9,27 @@ import Gachi from '../../assets/img/gachi-fist.gif'
 import Aska from '../../assets/img/evangelion-smug.gif'
 import Rick from '../../assets/img/funny-animals.gif'
 import { SCREENS } from '../../routes/endpoints'
+import {
+  $userList,
+  removeUsersFromStore,
+  setUserStore,
+  updateUserSelect,
+  updateUsersStore,
+  UserResponse,
+} from '../../store/userListStore'
+import { setGenderList } from '../../store/genderListStore'
+import URLS from '../../ApiUrl.json'
+import { useStore } from 'effector-react'
+import { getGenderList } from '../../assets/additionalFuntions'
+import {
+  $MyProfileDataStore,
+  setMyProfileDataStore,
+} from '../../store/myProfileDataStore'
 
 const Chat: React.FC = () => {
   const history = useHistory()
+  const userListStore = useStore($userList)
+  const myProfileDataStore = useStore($MyProfileDataStore)
   let connectKey: string | null = null
   if (localStorage.getItem('websocket') === undefined) {
     history.push(`${SCREENS.SCREEN_LOGIN}`)
@@ -23,11 +41,14 @@ const Chat: React.FC = () => {
       history.push(`${SCREENS.SCREEN_LOGIN}`)
     }
   }
-  const websocket = new WebSocket(
-    `ws://109.194.37.212:2346/?type=dickace&ws_id=${connectKey}`
-  )
   const { chatId } = useParams<{ chatId?: string }>()
   let id: string | undefined = chatId
+  if (chatId) updateUserSelect(chatId)
+  let ChattingUser: UserCardItem = {
+    username: 'Name',
+    gender: 'Male',
+    isSelected: false,
+  }
 
   const [isChatDisplay, setIsChatDisplay] = useState<boolean>(false)
 
@@ -35,55 +56,113 @@ const Chat: React.FC = () => {
     setIsChatDisplay(false)
   }
 
-  const handleUserCardClick = () => {
+  const handleUserCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (window.matchMedia('(max-width: 768px)').matches) {
       setIsChatDisplay(true)
     }
+    history.push(
+      `${SCREENS.SCREEN_CHAT}/${event.currentTarget.getAttribute(
+        'data-chatId'
+      )}`
+    )
   }
+
   useEffect(() => {
     if (window.matchMedia('(max-width: 768px)').matches) setIsChatDisplay(false)
-    websocket.onmessage = function (msg) {
-      console.log(JSON.stringify(msg))
+    getGenderList()
+      .then((response) => {
+        setGenderList(response)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    const websocket = new WebSocket(
+      `${URLS.WS_URL}/?type=test&ws_id=${connectKey}`
+    )
+    websocket.onmessage = async function (msg) {
+      try {
+        const decodeMsg = await JSON.parse(msg.data)
+        if (decodeMsg?.type === 'users_list') {
+          removeUsersFromStore()
+          decodeMsg?.data.find(
+            (
+              value: UserResponse,
+              index: number,
+              array: Array<UserResponse>
+            ) => {
+              if (
+                value.name === myProfileDataStore.name &&
+                value.gender === myProfileDataStore.gender
+              ) {
+                array.splice(index, 1)
+              }
+              console.log(array)
+              console.log(myProfileDataStore)
+            }
+          )
+          setUserStore(decodeMsg?.data)
+        } else if (decodeMsg?.type === 'user_data') {
+          console.log(decodeMsg?.data)
+          setMyProfileDataStore(decodeMsg?.data)
+        }
+        userListStore.forEach((value) => {
+          if (value.chatId === chatId) {
+            value.isSelected = true
+            ChattingUser = value
+            return
+          }
+        })
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    websocket.onopen = () => {
+      updateUsersStore(websocket)
+    }
+    websocket.onclose = () => {
+      console.log('close')
+      removeUsersFromStore()
+      localStorage.removeItem('websocket')
     }
   }, [])
 
   //Ducks start
-  const User1: UserCardItem = {
-    username: 'Konstantin Konstantinopolski',
-    recentMsg: 'Hey!',
-    isFromMe: false,
-    isSelected: false,
-    chatId: '1',
-    lastSeen: '6 minute ago',
-    isOnline: false,
-  }
-  const User2: UserCardItem = {
-    username: 'Marina Joe',
-    recentMsg: 'Sed ut per...',
-    isFromMe: true,
-    isSelected: false,
-    chatId: '2',
-    lastSeen: '3 minute ago',
-    isOnline: true,
-  }
-  const User3: UserCardItem = {
-    username: 'Ernest Gillroy',
-    recentMsg: 'How are you doing?',
-    isFromMe: true,
-    isSelected: false,
-    chatId: '3',
-    lastSeen: '2 minute ago',
-    isOnline: false,
-  }
-  const User4: UserCardItem = {
-    username: 'Konstantin Konstantinopolski',
-    recentMsg: 'Hey!',
-    isFromMe: false,
-    isSelected: false,
-    chatId: '4',
-    lastSeen: '3 minute ago',
-    isOnline: true,
-  }
+  // const User1: UserCardItem = {
+  //   username: 'Konstantin Konstantinopolski',
+  //   recentMsg: 'Hey!',
+  //   isFromMe: false,
+  //   isSelected: false,
+  //   chatId: '1',
+  //   lastSeen: '6 minute ago',
+  //   isOnline: false,
+  // }
+  // const User2: UserCardItem = {
+  //   username: 'Marina Joe',
+  //   recentMsg: 'Sed ut per...',
+  //   isFromMe: true,
+  //   isSelected: false,
+  //   chatId: '2',
+  //   lastSeen: '3 minute ago',
+  //   isOnline: true,
+  // }
+  // const User3: UserCardItem = {
+  //   username: 'Ernest Gillroy',
+  //   recentMsg: 'How are you doing?',
+  //   isFromMe: true,
+  //   isSelected: false,
+  //   chatId: '3',
+  //   lastSeen: '2 minute ago',
+  //   isOnline: false,
+  // }
+  // const User4: UserCardItem = {
+  //   username: 'Konstantin Konstantinopolski',
+  //   recentMsg: 'Hey!',
+  //   isFromMe: false,
+  //   isSelected: false,
+  //   chatId: '4',
+  //   lastSeen: '3 minute ago',
+  //   isOnline: true,
+  // }
   const file1: File = {
     filename: 'File_for_exampl0011232555234.doc',
     fileSize: '4.2 MB',
@@ -150,24 +229,17 @@ const Chat: React.FC = () => {
     files: [file2],
   }
   let MessageList: Array<MessageItem> = []
-  let ChattingUser: UserCardItem = {
-    username: 'Marina Joe',
-    recentMsg: 'Sed ut per...',
-    isFromMe: true,
-    isSelected: false,
-    chatId: '2',
-    lastSeen: '3 minute ago',
-    isOnline: false,
-  }
-  const ContactList: Array<UserCardItem> = [User1, User2, User3, User4]
-  //Ducks end
-  ContactList.forEach((value) => {
-    if (value.chatId === chatId) {
-      value.isSelected = true
-      ChattingUser = value
-      return
-    }
-  })
+  // let ChattingUser: UserCardItem = {
+  //   username: 'Marina Joe',
+  //   recentMsg: 'Sed ut per...',
+  //   isFromMe: true,
+  //   isSelected: false,
+  //   chatId: '2',
+  //   lastSeen: '3 minute ago',
+  //   isOnline: false,
+  // }
+  // const ContactList: Array<UserCardItem> = [User1, User2, User3, User4]
+  // //Ducks end
 
   //async request here (pseudo code)
   //axios(`${API_URL}chats/${chatId}`,{headers: authHeader}).then((response)=>{ [].foreach(response, (value)=>{ Message.push({...})})})
@@ -207,7 +279,6 @@ const Chat: React.FC = () => {
       chatId={id}
       chattingUser={ChattingUser}
       MessageList={MessageList}
-      ContactList={ContactList}
     />
   )
 }

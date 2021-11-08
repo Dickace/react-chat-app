@@ -2,10 +2,15 @@ import React from 'react'
 import Avatar from '../../atoms/Avatar'
 import Text from '../../atoms/Text'
 import './style.scss'
+import maleIcon from '../../../assets/img/maleIcon.svg'
+import femaleIcon from '../../../assets/img/femaleIcon.svg'
+import unknownIcon from '../../../assets/img/nousericon.svg'
+
 export type UserCardItem = {
   username: string
-  recentMsg: string
-  isFromMe: boolean
+  gender: string
+  recentMsg?: string
+  isFromMe?: boolean
   isSelected: boolean
   avatar?: string
   chatId?: string
@@ -14,7 +19,7 @@ export type UserCardItem = {
 }
 export interface UserCardProps {
   userCard?: UserCardItem
-  handleClickUserCard?: () => void
+  handleClickUserCard?: React.MouseEventHandler<HTMLDivElement>
 }
 
 const UserCard: React.FC<UserCardProps> = ({
@@ -27,13 +32,25 @@ const UserCard: React.FC<UserCardProps> = ({
   },
   handleClickUserCard,
 }) => {
+  const avatarImage = () => {
+    if (!userCard.avatar) {
+      return userCard.avatar
+    } else if (userCard.gender === 'male') {
+      return maleIcon
+    } else if (userCard.gender === 'female') {
+      return femaleIcon
+    } else {
+      return unknownIcon
+    }
+  }
   return (
     <div
       onClick={handleClickUserCard}
+      data-chatId={userCard.chatId}
       data-selected={userCard.isSelected}
       className={`userCard`}
     >
-      <Avatar avatarImage={userCard.avatar} />
+      <Avatar avatarImage={avatarImage()} />
       <div className="userCard-textBlock">
         <Text text={userCard.username} isHeader type="4" />
         <div className="userCard-msg">

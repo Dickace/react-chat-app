@@ -5,10 +5,8 @@
   .userList{
     width: 25%;
     height: 100%;
-    > a:first-child{
-      .userCard{
+    .userCard:first-child{
         margin-top: 80px;
-      }
     }
 
   }

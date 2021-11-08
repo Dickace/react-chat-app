@@ -1,0 +1,59 @@
+.captcha{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 354px;
+  &-input{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: calc(50% - 6px);
+  }
+  &-inputField{
+    border: 1px solid #B3CDF8;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  &-refresh{
+    margin-top: 23px;
+
+    width: calc(50% - 6px);
+    position: relative;
+  }
+  &-image{
+    width: 100%;
+    height: 56px;
+    border: 1px solid #B3CDF8;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 12px 38px;
+  }
+  &-label{
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+    margin-bottom: 4px;
+  }
+  &-refreshIcon{
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translate(100%,-50%);
+  }
+  &-msg{
+    position: absolute;
+    left: 8px;
+    top: 100%;
+    font-size: 13px;
+    line-height: 19px;
+    &__regular{
+      color: #5C98F1;
+    }
+    &__error{
+      color: #FB6262;
+    }
+  }
+}

@@ -1,15 +1,15 @@
 .wellcomeTemplate{
   display: flex;
-  height: 100vh;
   .loginContainer{
     flex: 0 0 50%;
     display: flex;
     .wellcomeArea{
-      margin: auto;
+      margin: 64px auto;
     }
   }
   .beautyBackground{
     flex: 0 0 50%;
+    max-height: 1080px;
   }
   @media (max-width: 768px) {
     flex-direction: column-reverse;
@@ -26,15 +26,10 @@
             margin-bottom: 8px;
           }
         }
-        .loginForm{
-          button{
-            width: 100%;
-          }
-        }
       }
     }
     .beautyBackground{
-      flex: 0 0 44%;
+      max-height: 380px;
     }
   }
 }

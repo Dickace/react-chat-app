@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { catchFileNameFromPath } from '../../../assets/additionalFuntions'
 import { UseFormRegisterReturn } from 'react-hook-form'
 import URLS from '../../../ApiUrl.json'
+import './style.scss'
+import refreshIcon from '../../../assets/img/refresh.svg'
 
 interface CaptchaProps {
   registerInput: UseFormRegisterReturn
+  msg?: string
 }
 
-const Captcha: React.FC<CaptchaProps> = ({ registerInput }) => {
+const Captcha: React.FC<CaptchaProps> = ({ registerInput, msg }) => {
   const [captchaImg, setCaptchaImg] = useState<string>('')
 
   const handleRefreshCaptchaClick = () => {
@@ -20,7 +23,6 @@ const Captcha: React.FC<CaptchaProps> = ({ registerInput }) => {
       method: 'GET',
       credentials: 'include',
     })
-    console.log(response.headers.has('Set-cookie'))
     if (response.ok) {
       const imgBlob = await response.blob()
       setCaptchaImg(URL.createObjectURL(imgBlob))
@@ -35,12 +37,31 @@ const Captcha: React.FC<CaptchaProps> = ({ registerInput }) => {
   }, [])
 
   return (
-    <label>
-      <span>Input captcha</span>
-      <img src={captchaImg} alt={catchFileNameFromPath(captchaImg)} />
-      <input {...registerInput} type="text" />
-      <div onClick={handleRefreshCaptchaClick}>Refresh captcha</div>
-    </label>
+    <div className="captcha">
+      <label className="captcha-input">
+        <span className="captcha-label">Security code</span>
+        <input
+          className="captcha-inputField"
+          {...registerInput}
+          type="text"
+          placeholder="Security code"
+        />
+        {msg ? <p className="captcha-msg captcha-msg__error">{msg}</p> : null}
+      </label>
+      <div className="captcha-refresh">
+        <img
+          className="captcha-image"
+          src={captchaImg}
+          alt={catchFileNameFromPath(captchaImg)}
+        />
+        <img
+          className="captcha-refreshIcon"
+          onClick={handleRefreshCaptchaClick}
+          src={refreshIcon}
+          alt={catchFileNameFromPath(refreshIcon)}
+        />
+      </div>
+    </div>
   )
 }
 export default Captcha

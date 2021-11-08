@@ -9,17 +9,15 @@ import BeautyBG from '../../../assets/img/chatBeautyBackground.svg'
 import Text from '../../atoms/Text'
 
 interface ChatLayoutProps {
-  ContactList: Array<UserCardItem>
   MessageList?: Array<MessageItem>
   chatId?: string
   chattingUser: UserCardItem
   isChatDisplay?: boolean
   handleBackClick?: () => void
-  handleUserCardClick?: () => void
+  handleUserCardClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
 const ChatLayout: React.FC<ChatLayoutProps> = ({
-  ContactList,
   MessageList,
   chatId,
   chattingUser,
@@ -41,10 +39,7 @@ const ChatLayout: React.FC<ChatLayoutProps> = ({
     <>
       <AppHeader />
       <section style={chatSlider} className="chatContainer">
-        <UserList
-          handleUserCardClick={handleUserCardClick}
-          userList={ContactList}
-        />
+        <UserList handleUserCardClick={handleUserCardClick} />
         <div className="chatContainer-chat" style={displayStyle}>
           {chatId !== undefined ? (
             <ChatArea

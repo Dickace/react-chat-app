@@ -2,7 +2,7 @@ import { createEvent, createStore } from 'effector'
 import { ILoginFormInputs } from '../components/molecules/LoginForm'
 import { SubmitHandler } from 'react-hook-form'
 
-export interface LoginForm {
+export interface LoginFormStore {
   handleLoginSubmit: SubmitHandler<ILoginFormInputs>
   formError?: string
 }
@@ -11,7 +11,7 @@ export const setLoginError = createEvent<string>()
 export const setHandleLoginSubmit =
   createEvent<(data: ILoginFormInputs) => void>()
 
-export const $LoginForm = createStore<LoginForm>({
+export const $LoginForm = createStore<LoginFormStore>({
   handleLoginSubmit: () => {
     return 0
   },

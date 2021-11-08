@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.scss'
 import InfoIcon from '../../../assets/img/info.svg'
 import { catchFileNameFromPath } from '../../../assets/additionalFuntions'
 import { UseFormRegisterReturn } from 'react-hook-form'
 
 type InputFieldsProps = {
-  handleChangeStyle: (state: string) => void
   placeholder: string
   label: string
   type?: string
-  style?: string
   msg?: string
+  readonly?: boolean
   children?: React.ReactElement | string
   registerInput: UseFormRegisterReturn
 }
@@ -19,17 +18,17 @@ const InputField: React.FC<InputFieldsProps> = ({
   placeholder = 'InputText',
   label = 'Input field',
   type = 'text',
-  style = 'regular',
   msg = '',
+  readonly = false,
   children,
   registerInput,
-  handleChangeStyle,
 }) => {
+  const [inputStyle, setInputStyle] = useState<string>('regular')
   const handleBlurInput = () => {
-    handleChangeStyle('regular')
+    setInputStyle('regular')
   }
   const handleFocusInput = () => {
-    handleChangeStyle('typing')
+    setInputStyle('typing')
   }
 
   return (
@@ -38,11 +37,12 @@ const InputField: React.FC<InputFieldsProps> = ({
         <span className="inputField-label">{label}</span>
         <input
           {...registerInput}
-          className={`inputField-input inputField-input__${style}`}
+          className={`inputField-input inputField-input__${inputStyle}`}
           type={type}
           onFocus={handleFocusInput}
           onBlur={handleBlurInput}
           placeholder={placeholder}
+          readOnly={readonly}
         />
         {msg ? (
           <>

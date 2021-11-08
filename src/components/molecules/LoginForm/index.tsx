@@ -7,8 +7,9 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Text from '../../atoms/Text'
-import { $LoginForm } from '../../../store/loginForm'
+import { $LoginForm } from '../../../store/loginFormStore'
 import { useStore } from 'effector-react'
+import { useHistory } from 'react-router-dom'
 
 interface LoginFormProps {
   children?: React.ReactElement | string
@@ -21,9 +22,13 @@ export interface ILoginFormInputs {
 }
 const loginSchema = yup
   .object({
-    login: yup.string().required(),
-    password: yup.string().required(),
-    captcha: yup.string().required(),
+    login: yup.string().required('Login is required'),
+    password: yup.string().required('Password is required'),
+    captcha: yup
+      .string()
+      .required('Captcha is required')
+      .min(5, 'Captcha has 5 characters')
+      .max(5, 'Captcha has 5 characters'),
   })
   .required()
 
@@ -35,12 +40,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ children = '' }) => {
   } = useForm<ILoginFormInputs>({
     resolver: yupResolver(loginSchema),
   })
+  const history = useHistory()
   const loginForm = useStore($LoginForm)
 
-  const [userInputStyle, setUserInputStyle] = useState<string>('regular')
-  const [passwordInputStyle, setPasswordInputStyle] =
-    useState<string>('regular')
-
+  const handleRegisterClick = () => {
+    history.push('/signup')
+  }
   return (
     <form
       className="loginForm"
@@ -48,29 +53,38 @@ const LoginForm: React.FC<LoginFormProps> = ({ children = '' }) => {
     >
       <div className="loginForm-inputGroup">
         <InputField
-          handleChangeStyle={setUserInputStyle}
           msg={errors.login?.message}
           registerInput={register('login')}
-          style={userInputStyle}
           placeholder="Input user name"
           label="User name"
         />
         <InputField
-          handleChangeStyle={setPasswordInputStyle}
           msg={errors.password?.message}
           registerInput={register('password')}
-          style={passwordInputStyle}
           placeholder="Input password"
           label="Input password"
           type="password"
         />
-        <Captcha registerInput={register('captcha')} />
+        <Captcha
+          registerInput={register('captcha')}
+          msg={errors.captcha?.message}
+        />
       </div>
       {children}
       {loginForm.formError ? (
-        <Text text={loginForm.formError} color="red" />
+        <div className="loginForm-formError">
+          <Text text={loginForm.formError} />
+        </div>
       ) : null}
-      <Button type="submit" text="Log in" />
+      <div className="loginForm-btnGroup">
+        <Button type="submit" text="Log in" />
+        <Button
+          type="button"
+          isLink
+          text="Registration"
+          onClick={handleRegisterClick}
+        />
+      </div>
     </form>
   )
 }

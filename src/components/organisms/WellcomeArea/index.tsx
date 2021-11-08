@@ -1,13 +1,20 @@
 import WellcomeHeader from '../../molecules/WellcomeHeader'
-import LoginForm, { ILoginFormInputs } from '../../molecules/LoginForm'
 import './style.scss'
-import React from 'react'
+import React, { ReactElement, SetStateAction, useState } from 'react'
 
-const WellcomeArea: React.FC = () => {
+interface WellcomeAreaProps {
+  authPage: ReactElement
+  authHeader: ReactElement
+}
+
+const WellcomeArea: React.FC<WellcomeAreaProps> = ({
+  authPage,
+  authHeader,
+}) => {
   return (
     <div className="wellcomeArea">
-      <WellcomeHeader />
-      <LoginForm />
+      {authHeader}
+      {authPage}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import UserCard, { UserCardItem } from '../../molecules/UserCard'
 import Avatar from '../../atoms/Avatar'
 import './style.scss'
@@ -6,10 +6,11 @@ import NoUserIcon from '../../../assets/img/nousericon.svg'
 import Text from '../../atoms/Text'
 import { Link } from 'react-router-dom'
 import { SCREENS } from '../../../routes/endpoints'
+import { useStore } from 'effector-react'
+import { $userList, updateUserSelect } from '../../../store/userListStore'
 
 interface UserListProps {
-  userList?: Array<UserCardItem>
-  handleUserCardClick?: () => void
+  handleUserCardClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
 const NoUserIconStyle: React.CSSProperties = {
@@ -18,26 +19,23 @@ const NoUserIconStyle: React.CSSProperties = {
   borderRadius: '100px',
 }
 
-const UserList: React.FC<UserListProps> = ({
-  userList,
-  handleUserCardClick,
-}) => {
+const UserList: React.FC<UserListProps> = ({ handleUserCardClick }) => {
+  const [userList, setUserList] = useState<Array<UserCardItem>>([])
+  const userListStore = useStore($userList)
+  useEffect(() => {
+    setUserList(userListStore)
+  }, [userListStore])
   return (
     <>
       {userList?.length !== 0 && userList ? (
         <div className="userList">
           {userList.map((value: UserCardItem, index: number) => {
             return (
-              <Link
+              <UserCard
                 key={`${value.chatId}${index}`}
-                to={`${SCREENS.SCREEN_CHAT}/${value.chatId}`}
-              >
-                <UserCard
-                  key={`${value.username}${index}`}
-                  handleClickUserCard={handleUserCardClick}
-                  userCard={value}
-                />
-              </Link>
+                handleClickUserCard={handleUserCardClick}
+                userCard={value}
+              />
             )
           })}
         </div>

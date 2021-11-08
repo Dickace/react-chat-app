@@ -10,6 +10,9 @@ const Routes: React.FC = () => {
       <Route path={SCREENS.SCREEN_LOGIN} exact>
         <Authorization />
       </Route>
+      <Route path={SCREENS.SCREEN_REGISTER} exact>
+        <Authorization />
+      </Route>
       <Route path={SCREENS.SCREEN_CHAT} exact>
         <Chat />
       </Route>

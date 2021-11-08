@@ -23,5 +23,23 @@
   &__press{
     background: #2C6AC7;
   }
+  &-link{
+    border: 1px solid #5C98F1;
+    &__regular{
+      background: #FFFFFF;
+      color: #5C98F1;
+      &:hover{
+        background: #F3F8FF;
+      }
+    }
+    &__inactive{
+      border-color: #D1D1D1;
+      color: #D1D1D1;
+      cursor: default;
+    }
+    &__press{
+      background: #DFECFF;
+    }
+  }
 
 }
