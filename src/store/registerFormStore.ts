@@ -1,4 +1,4 @@
-import { IRegisterFormInputs } from '../components/molecules/RegisterFrom'
+import { IRegisterFormInputs } from '../components/molecules/RegisterForm'
 import { SubmitHandler } from 'react-hook-form'
 import { createEvent, createStore } from 'effector'
 

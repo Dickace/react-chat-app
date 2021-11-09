@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IRegisterFormInputs, Option } from '../../molecules/RegisterFrom'
+import { IRegisterFormInputs, Option } from '../../molecules/RegisterForm'
 import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
 import './style.scss'
 import DropArrow from '../../../assets/img/droparrow.svg'

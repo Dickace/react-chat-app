@@ -13,7 +13,6 @@ export const fetchLoginFx = createEffect<
   { status: number; text: string }
 >(async (data) => {
   const form: FormData = new FormData()
-  console.log(data)
   form.append('login', data.login)
   form.append('password', data.password)
   form.append('captcha', data.captcha)

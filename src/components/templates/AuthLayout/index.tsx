@@ -5,7 +5,7 @@ import React, { ReactElement, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { SCREENS } from '../../../routes/endpoints'
 import LoginForm from '../../molecules/LoginForm'
-import RegisterFrom from '../../molecules/RegisterFrom'
+import RegisterForm from '../../molecules/RegisterForm'
 import WellcomeHeader from '../../molecules/WellcomeHeader'
 
 const AuthLayout: React.FC = () => {
@@ -26,7 +26,7 @@ const AuthLayout: React.FC = () => {
     authHeader = (
       <WellcomeHeader headerText="Sign Up to&nbsp;" underText="Registration" />
     )
-    authPage = <RegisterFrom />
+    authPage = <RegisterForm />
   }
   return (
     <section className="wellcomeTemplate">

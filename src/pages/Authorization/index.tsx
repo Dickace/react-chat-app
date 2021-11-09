@@ -5,7 +5,7 @@ import URLS from '../../ApiUrl.json'
 import { useHistory } from 'react-router-dom'
 import { SCREENS } from '../../routes/endpoints'
 import { $LoginForm } from '../../store/loginFormStore'
-import { IRegisterFormInputs } from '../../components/molecules/RegisterFrom'
+import { IRegisterFormInputs } from '../../components/molecules/RegisterForm'
 import {
   setHandleRegisterSubmit,
   setRegisterError,
@@ -47,9 +47,6 @@ const Authorization: React.FC = () => {
       })
     setHandleRegisterSubmit(handleRegisterSubmit)
   }, [])
-  useEffect(() => {
-    console.log(loginStore.connectKey)
-  }, [loginStore.connectKey])
   return <AuthLayout />
 }
 export default Authorization
