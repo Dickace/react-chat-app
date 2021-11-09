@@ -48,7 +48,7 @@ const registerSchema = yup
   })
   .required()
 
-const RegisterFrom: React.FC = () => {
+const RegisterForm: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -132,4 +132,4 @@ const RegisterFrom: React.FC = () => {
     </form>
   )
 }
-export default RegisterFrom
+export default RegisterForm
