@@ -34,11 +34,8 @@ export const $userList = createStore<Array<UserCardItem>>([])
   })
   .on(updateUserSelect, (state: Array<UserCardItem>, chatId: string) => {
     const newState: Array<UserCardItem> = state
-    console.log(newState)
-    console.log(chatId)
     newState.find((element) => {
       element.isSelected = element.chatId === chatId
     })
-    console.log(newState)
     return newState
   })

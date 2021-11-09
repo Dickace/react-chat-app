@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import AuthLayout from '../../components/templates/AuthLayout'
 
 import URLS from '../../ApiUrl.json'
-import { ILoginFormInputs } from '../../components/molecules/LoginForm'
 import { useHistory } from 'react-router-dom'
 import { SCREENS } from '../../routes/endpoints'
-import { setHandleLoginSubmit, setLoginError } from '../../store/loginFormStore'
+import { $LoginForm } from '../../store/loginFormStore'
 import { IRegisterFormInputs } from '../../components/molecules/RegisterFrom'
 import {
   setHandleRegisterSubmit,
@@ -13,10 +12,11 @@ import {
 } from '../../store/registerFormStore'
 import { getGenderList } from '../../assets/additionalFuntions'
 import { setGenderList } from '../../store/genderListStore'
-import { updateUsersStore } from '../../store/userListStore'
+import { useStore } from 'effector-react'
 
 const Authorization: React.FC = () => {
   const history = useHistory<History>()
+  const loginStore = useStore($LoginForm)
   const handleRegisterSubmit = async (data: IRegisterFormInputs) => {
     const form: FormData = new FormData()
     form.append('login', data.login)
@@ -37,26 +37,6 @@ const Authorization: React.FC = () => {
       setRegisterError(responseBody)
     }
   }
-  const handleLoginSubmit = async (data: ILoginFormInputs) => {
-    const form: FormData = new FormData()
-    form.append('login', data.login)
-    form.append('password', data.password)
-    form.append('captcha', data.captcha)
-    const response = await fetch(`${URLS.API_URL}/api/auth/login`, {
-      method: 'POST',
-      body: form,
-      credentials: 'include',
-    })
-
-    if (response.ok) {
-      const responseBody = await response.text()
-      localStorage.setItem('websocket', responseBody)
-      history.push(`${SCREENS.SCREEN_CHAT}`)
-    } else if (response.status == 400) {
-      const responseBody = await response.text()
-      setLoginError(responseBody)
-    }
-  }
   useEffect(() => {
     getGenderList()
       .then((response) => {
@@ -66,9 +46,10 @@ const Authorization: React.FC = () => {
         console.log(err)
       })
     setHandleRegisterSubmit(handleRegisterSubmit)
-    setHandleLoginSubmit(handleLoginSubmit)
   }, [])
-
+  useEffect(() => {
+    console.log(loginStore.connectKey)
+  }, [loginStore.connectKey])
   return <AuthLayout />
 }
 export default Authorization

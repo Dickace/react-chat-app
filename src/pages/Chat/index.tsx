@@ -54,6 +54,7 @@ const Chat: React.FC = () => {
 
   const handleBackClick = () => {
     setIsChatDisplay(false)
+    history.push(`${SCREENS.SCREEN_CHAT}/0`)
   }
 
   const handleUserCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -62,7 +63,7 @@ const Chat: React.FC = () => {
     }
     history.push(
       `${SCREENS.SCREEN_CHAT}/${event.currentTarget.getAttribute(
-        'data-chatId'
+        'data-chatid'
       )}`
     )
   }
@@ -81,10 +82,13 @@ const Chat: React.FC = () => {
     )
     websocket.onmessage = async function (msg) {
       try {
+        if (msg.data === "Get param 'ws_id' - is wrong! Please relogin!") {
+          history.push(`${SCREENS.SCREEN_LOGIN}`)
+        }
         const decodeMsg = await JSON.parse(msg.data)
         if (decodeMsg?.type === 'users_list') {
           removeUsersFromStore()
-          decodeMsg?.data.find(
+          decodeMsg?.data.forEach(
             (
               value: UserResponse,
               index: number,
@@ -96,13 +100,10 @@ const Chat: React.FC = () => {
               ) {
                 array.splice(index, 1)
               }
-              console.log(array)
-              console.log(myProfileDataStore)
             }
           )
           setUserStore(decodeMsg?.data)
         } else if (decodeMsg?.type === 'user_data') {
-          console.log(decodeMsg?.data)
           setMyProfileDataStore(decodeMsg?.data)
         }
         userListStore.forEach((value) => {
@@ -120,7 +121,6 @@ const Chat: React.FC = () => {
       updateUsersStore(websocket)
     }
     websocket.onclose = () => {
-      console.log('close')
       removeUsersFromStore()
       localStorage.removeItem('websocket')
     }
