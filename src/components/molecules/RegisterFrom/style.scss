@@ -28,4 +28,28 @@
     position: absolute;
     transform: translate(0,-175%);
   }
+  @media (max-width: 768px) {
+    &-inputGroup{
+      margin-top: 24px;
+      .inputField{
+        margin-bottom: 24px;
+      }
+      .inputField:last-child{
+        margin-bottom: 0;
+      }
+    }
+    &-btnGroup{
+      width: 354px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      .button{
+        width: 100%;
+        margin-bottom: 8px;
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
 .wellcomeTemplate{
   display: flex;
+  height: 100vh;
   .loginContainer{
     flex: 0 0 50%;
     display: flex;
@@ -13,14 +14,16 @@
   }
   @media (max-width: 768px) {
     flex-direction: column-reverse;
+    justify-content: start;
+    height: auto;
     .loginContainer{
       flex: 0 0 56%;
       .wellcomeArea{
         position: relative;
-        margin-top: 27px;
+        margin-top: 0;
         .wellcomeHeader{
           position: absolute;
-          top: -48px;
+          top: -24px;
           transform: translate(0, -100%);
           &-string{
             margin-bottom: 8px;
@@ -29,7 +32,8 @@
       }
     }
     .beautyBackground{
-      max-height: 380px;
+      max-height: 256px;
+      border-radius: 0 0 16px 16px;
     }
   }
 }

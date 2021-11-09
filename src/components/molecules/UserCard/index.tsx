@@ -46,7 +46,7 @@ const UserCard: React.FC<UserCardProps> = ({
   return (
     <div
       onClick={handleClickUserCard}
-      data-chatId={userCard.chatId}
+      data-chatid={userCard.chatId}
       data-selected={userCard.isSelected}
       className={`userCard`}
     >

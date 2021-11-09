@@ -56,4 +56,10 @@
       color: #FB6262;
     }
   }
+  @media (max-width: 768px) {
+    &-refreshIcon{
+      right: 0;
+      transform: translate(-100%,-50%);
+    }
+  }
 }

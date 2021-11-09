@@ -12,19 +12,19 @@ const AuthLayout: React.FC = () => {
   const path = useLocation()
   let authPage = <LoginForm />
   let authHeader = (
-    <WellcomeHeader headerText="Sign Up to" underText="Registration" />
+    <WellcomeHeader headerText="Sign Up to&nbsp;" underText="Registration" />
   )
   if (path.pathname === SCREENS.SCREEN_LOGIN) {
     authHeader = (
       <WellcomeHeader
-        headerText="Wellcome to"
+        headerText="Wellcome to&nbsp;"
         underText="Please, authorize yourself"
       />
     )
     authPage = <LoginForm />
   } else if (path.pathname === SCREENS.SCREEN_REGISTER) {
     authHeader = (
-      <WellcomeHeader headerText="Sign Up to" underText="Registration" />
+      <WellcomeHeader headerText="Sign Up to&nbsp;" underText="Registration" />
     )
     authPage = <RegisterFrom />
   }

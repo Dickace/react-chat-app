@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Text from '../../atoms/Text'
-import { $LoginForm } from '../../../store/loginFormStore'
+import { $LoginForm, fetchLoginFx } from '../../../store/loginFormStore'
 import { useStore } from 'effector-react'
 import { useHistory } from 'react-router-dom'
 
@@ -47,10 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ children = '' }) => {
     history.push('/signup')
   }
   return (
-    <form
-      className="loginForm"
-      onSubmit={handleSubmit(loginForm.handleLoginSubmit)}
-    >
+    <form className="loginForm" onSubmit={handleSubmit(fetchLoginFx)}>
       <div className="loginForm-inputGroup">
         <InputField
           msg={errors.login?.message}
