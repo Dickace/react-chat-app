@@ -17,7 +17,6 @@ export const $userList = createStore<Array<UserCardItem>>([])
     users.map((user, index) => {
       const newUser: UserCardItem = {
         username: user.name,
-        chatId: (index + 1).toString(),
         gender: user.gender,
         isSelected: false,
       }
@@ -32,10 +31,10 @@ export const $userList = createStore<Array<UserCardItem>>([])
     webSocket.send(JSON.stringify({ type: 'user_data' }))
     webSocket.send(JSON.stringify({ type: 'users_list' }))
   })
-  .on(updateUserSelect, (state: Array<UserCardItem>, chatId: string) => {
+  .on(updateUserSelect, (state: Array<UserCardItem>, username: string) => {
     const newState: Array<UserCardItem> = state
     newState.find((element) => {
-      element.isSelected = element.chatId === chatId
+      element.isSelected = element.username === username
     })
     return newState
   })

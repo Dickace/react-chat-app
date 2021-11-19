@@ -7,6 +7,7 @@ export type MessageItem = {
   text: string
   files: Array<File>
   isFromMe: boolean
+  userName?: string
 }
 
 export interface MessageProps {
