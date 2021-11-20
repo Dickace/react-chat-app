@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c8dbe4b3.chunk.css",
+    "main.js": "/static/js/main.36707491.chunk.js",
+    "main.js.map": "/static/js/main.36707491.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.96601cd0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.96601cd0.js.map",
+    "static/css/2.679831fc.chunk.css": "/static/css/2.679831fc.chunk.css",
+    "static/js/2.e2aac040.chunk.js": "/static/js/2.e2aac040.chunk.js",
+    "static/js/2.e2aac040.chunk.js.map": "/static/js/2.e2aac040.chunk.js.map",
+    "static/js/3.9ba6f615.chunk.js": "/static/js/3.9ba6f615.chunk.js",
+    "static/js/3.9ba6f615.chunk.js.map": "/static/js/3.9ba6f615.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/static/css/2.679831fc.chunk.css.map",
+    "static/css/main.c8dbe4b3.chunk.css.map": "/static/css/main.c8dbe4b3.chunk.css.map",
+    "static/js/2.e2aac040.chunk.js.LICENSE.txt": "/static/js/2.e2aac040.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Montserrat-SemiBold.fa8441f3.ttf",
+    "static/media/Vasserman_logo.afef6b61.jpg": "/static/media/Vasserman_logo.afef6b61.jpg",
+    "static/media/accounticon.dbb31048.svg": "/static/media/accounticon.dbb31048.svg",
+    "static/media/backIcon.d3fd6ea1.svg": "/static/media/backIcon.d3fd6ea1.svg",
+    "static/media/beautyBackground.a8851126.svg": "/static/media/beautyBackground.a8851126.svg",
+    "static/media/beautyBackgroundMobile.5bb270b4.svg": "/static/media/beautyBackgroundMobile.5bb270b4.svg",
+    "static/media/chatBeautyBackground.c08ad226.svg": "/static/media/chatBeautyBackground.c08ad226.svg",
+    "static/media/chatlogo.c96a0da5.svg": "/static/media/chatlogo.c96a0da5.svg",
+    "static/media/defaultAvatar.639548b6.svg": "/static/media/defaultAvatar.639548b6.svg",
+    "static/media/evangelion-smug.7cebb251.gif": "/static/media/evangelion-smug.7cebb251.gif",
+    "static/media/fileIcon.c4a3d7f0.svg": "/static/media/fileIcon.c4a3d7f0.svg",
+    "static/media/funny-animals.c49c20a0.gif": "/static/media/funny-animals.c49c20a0.gif",
+    "static/media/gachi-fist.2252226d.gif": "/static/media/gachi-fist.2252226d.gif",
+    "static/media/info.410775e6.svg": "/static/media/info.410775e6.svg",
+    "static/media/nousericon.2a176518.svg": "/static/media/nousericon.2a176518.svg",
+    "static/media/pinFile.cc6bfb49.svg": "/static/media/pinFile.cc6bfb49.svg",
+    "static/media/sendMessage.bff66a4e.svg": "/static/media/sendMessage.bff66a4e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.96601cd0.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.e2aac040.chunk.js",
+    "static/css/main.c8dbe4b3.chunk.css",
+    "static/js/main.36707491.chunk.js"
+  ]
+}
