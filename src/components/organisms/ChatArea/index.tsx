@@ -9,6 +9,7 @@ import { useStore } from 'effector-react'
 import { $ChatStore, saveMessage } from '../../../store/chatStore'
 import { useParams } from 'react-router-dom'
 import { $userList } from '../../../store/userListStore'
+import URLS from '../../../ApiUrl.json'
 
 interface ChatAreaProps {
   handleBackClick?: () => void

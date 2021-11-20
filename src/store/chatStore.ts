@@ -44,7 +44,8 @@ export const $ChatStore = createStore<Array<ChatItemStore>>([])
         messages: [message],
       })
     }
-    localStorage.setItem('chats', JSON.stringify(state))
+
+    localStorage.setItem('chats', JSON.stringify(newState))
     console.log(newState === state)
     return newState
   })

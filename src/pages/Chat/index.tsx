@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ChatLayout from '../../components/templates/ChatLayout'
 import { useHistory, useParams } from 'react-router-dom'
-import { UserCardItem } from '../../components/molecules/UserCard'
 import { MessageItem } from '../../components/molecules/Message'
-import { File } from '../../components/atoms/FileIcon'
-import Picture from '../../assets/img/Vasserman_logo.jpg'
-import Gachi from '../../assets/img/gachi-fist.gif'
-import Aska from '../../assets/img/evangelion-smug.gif'
-import Rick from '../../assets/img/funny-animals.gif'
 import { SCREENS } from '../../routes/endpoints'
 import {
   $userList,
@@ -139,37 +133,6 @@ const Chat: React.FC = () => {
     }
     setWebsocket(websocket)
   }, [])
-
-  const file1: File = {
-    filename: 'File_for_exampl0011232555234.doc',
-    fileSize: '4.2 MB',
-    fileFormat: 'doc',
-    filePreview: '',
-  }
-  const file2: File = {
-    filename: 'Vasserman_logo',
-    fileSize: '2 MB',
-    fileFormat: 'jpg',
-    filePreview: Picture,
-  }
-  const file3: File = {
-    filename: 'За ФСУ',
-    fileSize: '4.2 MB',
-    fileFormat: 'gif',
-    filePreview: Gachi,
-  }
-  const file4: File = {
-    filename: '',
-    fileSize: '2 MB',
-    fileFormat: 'gif',
-    filePreview: Aska,
-  }
-  const file5: File = {
-    filename: 'Cacth',
-    fileSize: '2 MB',
-    fileFormat: 'gif',
-    filePreview: Rick,
-  }
 
   return (
     <ChatLayout

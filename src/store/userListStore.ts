@@ -19,6 +19,7 @@ export const $userList = createStore<Array<UserCardItem>>([])
         username: user.name,
         gender: user.gender,
         isSelected: false,
+        isOnline: true,
       }
       newState.push(newUser)
     })
