@@ -13,7 +13,6 @@ export type UserCardItem = {
   isFromMe?: boolean
   isSelected: boolean
   avatar?: string
-  chatId?: string
   lastSeen?: string
   isOnline?: boolean
 }
@@ -28,7 +27,6 @@ const UserCard: React.FC<UserCardProps> = ({
     recentMsg: 'Hey!',
     isFromMe: false,
     selected: false,
-    chatId: '0',
   },
   handleClickUserCard,
 }) => {
@@ -46,7 +44,7 @@ const UserCard: React.FC<UserCardProps> = ({
   return (
     <div
       onClick={handleClickUserCard}
-      data-chatid={userCard.chatId}
+      data-username={userCard.username}
       data-selected={userCard.isSelected}
       className={`userCard`}
     >

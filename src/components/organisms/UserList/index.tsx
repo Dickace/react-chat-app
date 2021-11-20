@@ -32,7 +32,7 @@ const UserList: React.FC<UserListProps> = ({ handleUserCardClick }) => {
           {userList.map((value: UserCardItem, index: number) => {
             return (
               <UserCard
-                key={`${value.chatId}${index}`}
+                key={`${value.username}${index}`}
                 handleClickUserCard={handleUserCardClick}
                 userCard={value}
               />

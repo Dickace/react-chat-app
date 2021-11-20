@@ -1,3 +1,14 @@
+.previewFile{
+  display: flex;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 100px;
+  img{
+    height:  100px;
+    margin-left: 24px;
+  }
+}
 .chatInput{
   min-height: 80px;
   display: flex;
@@ -17,6 +28,10 @@
   }
   &-file, &-submit{
     display: none;
+  }
+  &-fileError{
+    position: absolute;
+    color: red;
   }
   &-messageInput{
     flex-grow: 1;

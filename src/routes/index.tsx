@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { SCREENS } from './endpoints'
 import Authorization from '../pages/Authorization'
 import Chat from '../pages/Chat'
@@ -24,4 +24,4 @@ const Routes: React.FC = () => {
   )
 }
 
-export default Routes
+export default withRouter(Routes)

@@ -4,23 +4,18 @@ import React from 'react'
 import './style.scss'
 import ChatArea from '../../organisms/ChatArea'
 import { UserCardItem } from '../../molecules/UserCard'
-import { MessageItem } from '../../molecules/Message'
 import BeautyBG from '../../../assets/img/chatBeautyBackground.svg'
 import Text from '../../atoms/Text'
 
 interface ChatLayoutProps {
-  MessageList?: Array<MessageItem>
-  chatId?: string
-  chattingUser: UserCardItem
+  username?: string
   isChatDisplay?: boolean
   handleBackClick?: () => void
   handleUserCardClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
 const ChatLayout: React.FC<ChatLayoutProps> = ({
-  MessageList,
-  chatId,
-  chattingUser,
+  username,
   isChatDisplay,
   handleBackClick,
   handleUserCardClick,
@@ -41,12 +36,8 @@ const ChatLayout: React.FC<ChatLayoutProps> = ({
       <section style={chatSlider} className="chatContainer">
         <UserList handleUserCardClick={handleUserCardClick} />
         <div className="chatContainer-chat" style={displayStyle}>
-          {chatId !== undefined ? (
-            <ChatArea
-              handleBackClick={handleBackClick}
-              chattingUser={chattingUser}
-              messageList={MessageList}
-            />
+          {username !== undefined ? (
+            <ChatArea handleBackClick={handleBackClick} />
           ) : (
             <Text text="Select a chat to stray messaging" />
           )}

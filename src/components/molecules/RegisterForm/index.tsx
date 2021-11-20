@@ -95,12 +95,14 @@ const RegisterForm: React.FC = () => {
           label="Create password"
           registerInput={register('password')}
           msg={errors.password?.message}
+          type="password"
         />
         <InputField
           placeholder="Password confirmation"
           label="Password confirmation"
           registerInput={register('password_confirm')}
           msg={errors.password_confirm?.message}
+          type="password"
         />
         <InputField
           placeholder="Nickname"

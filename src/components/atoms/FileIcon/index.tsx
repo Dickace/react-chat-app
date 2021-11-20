@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DocIcon from '../../../assets/img/fileIcon.svg'
 import './style.scss'
 import Text from '../Text'
 import Image from '../Image'
-import { catchFileNameFromPath } from '../../../assets/additionalFuntions'
+import {
+  catchFileNameFromPath,
+  sizeConvert,
+} from '../../../assets/additionalFuntions'
 
 export type File = {
   filename: string
@@ -13,23 +16,39 @@ export type File = {
 }
 
 interface FileIconProps {
-  file?: File
+  filepath?: string
 }
 
-const FileIcon: React.FC<FileIconProps> = ({
-  file = {
+const FileIcon: React.FC<FileIconProps> = ({ filepath = '' }) => {
+  const [file, setFile] = useState<File>({
     filename: 'file_name_001',
     fileSize: '2.4 MB',
     filePreview: DocIcon,
     fileFormat: 'doc',
-  },
-}) => {
+  })
+  useEffect(() => {
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', `${filepath}`, true)
+    xhr.responseType = 'blob'
+    xhr.onreadystatechange = function () {
+      if (this.readyState == this.DONE) {
+        const newfile: File = {
+          filename: catchFileNameFromPath(filepath),
+          filePreview: `${filepath}`,
+          fileSize: sizeConvert(this.response?.size),
+          fileFormat: this.response?.type,
+        }
+        setFile(newfile)
+      }
+    }
+    xhr.send(null)
+  }, [])
   return (
-    <div className="file">
-      {file.fileFormat === 'jpg' ||
-      file.fileFormat === 'png' ||
-      file.fileFormat === 'jpeg' ||
-      file.fileFormat === 'gif' ? (
+    <a className="file" href={filepath}>
+      {file.fileFormat === 'image/jpg' ||
+      file.fileFormat === 'image/png' ||
+      file.fileFormat === 'image/jpeg' ||
+      file.fileFormat === 'image/gif' ? (
         <Image src={file.filePreview} />
       ) : (
         <>
@@ -44,7 +63,7 @@ const FileIcon: React.FC<FileIconProps> = ({
           </div>
         </>
       )}
-    </div>
+    </a>
   )
 }
 export default FileIcon

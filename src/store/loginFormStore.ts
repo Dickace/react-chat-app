@@ -27,7 +27,7 @@ export const fetchLoginFx = createEffect<
   } else if (response.status == 400) {
     return { status: response.status, text: await response.text() }
   } else {
-    return { status: response.status, text: `Error: ${response.status}` }
+    return { status: response.status, text: await response.text() }
   }
 })
 
