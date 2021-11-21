@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import AuthLayout from '../../components/templates/AuthLayout'
 
 import URLS from '../../ApiUrl.json'
@@ -12,11 +12,9 @@ import {
 } from '../../store/registerFormStore'
 import { getGenderList } from '../../assets/additionalFuntions'
 import { setGenderList } from '../../store/genderListStore'
-import { useStore } from 'effector-react'
 
 const Authorization: React.FC = () => {
   const history = useHistory<History>()
-  const loginStore = useStore($LoginForm)
   const handleRegisterSubmit = async (data: IRegisterFormInputs) => {
     const form: FormData = new FormData()
     form.append('login', data.login)

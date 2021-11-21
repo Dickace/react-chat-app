@@ -1,7 +1,7 @@
 import WellcomeArea from '../../organisms/WellcomeArea'
 import BeautifulBackground from '../../atoms/BeautifulBackground'
 import './style.scss'
-import React, { ReactElement, useState } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { SCREENS } from '../../../routes/endpoints'
 import LoginForm from '../../molecules/LoginForm'

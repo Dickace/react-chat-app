@@ -1,6 +1,5 @@
-import WellcomeHeader from '../../molecules/WellcomeHeader'
 import './style.scss'
-import React, { ReactElement, SetStateAction, useState } from 'react'
+import React, { ReactElement } from 'react'
 
 interface WellcomeAreaProps {
   authPage: ReactElement

@@ -1,4 +1,4 @@
-import { createEffect, createEvent, createStore } from 'effector'
+import { createEvent, createStore } from 'effector'
 import { UserCardItem } from '../components/molecules/UserCard'
 
 export interface UserResponse {
@@ -14,7 +14,7 @@ export const updateUserSelect = createEvent<string>()
 export const $userList = createStore<Array<UserCardItem>>([])
   .on(setUserStore, (state, users) => {
     const newState: Array<UserCardItem> = []
-    users.map((user, index) => {
+    users.map((user) => {
       const newUser: UserCardItem = {
         username: user.name,
         gender: user.gender,

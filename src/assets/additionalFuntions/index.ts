@@ -1,5 +1,4 @@
 import URLS from '../../ApiUrl.json'
-import { File } from '../../components/atoms/FileIcon'
 
 const allowedFileTypes = [
   'video/mp4',

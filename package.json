@@ -2,6 +2,7 @@
   "name": "react-chat-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dickace.github.io/react-chat-app",
   "dependencies": {
     "@hookform/resolvers": "^2.8.3",
     "@testing-library/jest-dom": "^5.14.1",
@@ -13,6 +14,7 @@
     "@types/react-dom": "^17.0.9",
     "effector": "^22.1.2",
     "effector-react": "^22.0.4",
+    "gh-pages": "^3.2.3",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -30,7 +32,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
-    "eslint": "node_modules/.bin/eslint src/"
+    "eslint": "node_modules/.bin/eslint src/",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

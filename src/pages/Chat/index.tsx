@@ -4,7 +4,6 @@ import { useHistory, useParams } from 'react-router-dom'
 import { MessageItem } from '../../components/molecules/Message'
 import { SCREENS } from '../../routes/endpoints'
 import {
-  $userList,
   removeUsersFromStore,
   setUserStore,
   updateUserSelect,
@@ -24,7 +23,6 @@ import { setWebsocket } from '../../store/websocketStore'
 
 const Chat: React.FC = () => {
   const history = useHistory()
-  const userListStore = useStore($userList)
   const myProfileDataStore = useStore($MyProfileDataStore)
 
   let connectKey: string | null = null

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import InputField from '../../atoms/InputField'
 import Button from '../../atoms/Button'
 import './style.scss'

@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useRef, useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import Message, { MessageItem } from '../../molecules/Message'
 import Text from '../../atoms/Text'
 import ChatHeader from '../../molecules/ChatHeader'
@@ -6,10 +6,9 @@ import ChatInput from '../../molecules/ChatInput'
 import './style.scss'
 import { UserCardItem } from '../../molecules/UserCard'
 import { useStore } from 'effector-react'
-import { $ChatStore, saveMessage } from '../../../store/chatStore'
+import { $ChatStore } from '../../../store/chatStore'
 import { useParams } from 'react-router-dom'
 import { $userList } from '../../../store/userListStore'
-import URLS from '../../../ApiUrl.json'
 
 interface ChatAreaProps {
   handleBackClick?: () => void

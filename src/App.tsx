@@ -4,15 +4,12 @@ import './App.css'
 import Routes from './routes'
 import { BrowserRouter } from 'react-router-dom'
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
-      {/*<div>*/}
-      {/*  <SpinLoader />*/}
-      {/*</div>*/}
     </div>
   )
 }

@@ -4,10 +4,8 @@ import Avatar from '../../atoms/Avatar'
 import './style.scss'
 import NoUserIcon from '../../../assets/img/nousericon.svg'
 import Text from '../../atoms/Text'
-import { Link } from 'react-router-dom'
-import { SCREENS } from '../../../routes/endpoints'
 import { useStore } from 'effector-react'
-import { $userList, updateUserSelect } from '../../../store/userListStore'
+import { $userList } from '../../../store/userListStore'
 
 interface UserListProps {
   handleUserCardClick?: React.MouseEventHandler<HTMLDivElement>

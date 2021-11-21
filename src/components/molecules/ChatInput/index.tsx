@@ -1,13 +1,4 @@
-import React, {
-  ChangeEvent,
-  ChangeEventHandler,
-  createRef,
-  EventHandler,
-  FormEvent,
-  FormEventHandler,
-  useEffect,
-  useState,
-} from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import SendIcon from '../../../assets/img/sendMessage.svg'
 import PinIcon from '../../../assets/img/pinFile.svg'
 import './style.scss'

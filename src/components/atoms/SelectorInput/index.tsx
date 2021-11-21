@@ -33,14 +33,14 @@ const SelectorInput: React.FC<SelectorInputProps> = ({
     }
   }
   const handleOptionChange = (event: React.FormEvent<HTMLInputElement>) => {
-    registerInput.onChange(event).then((result) => {
+    registerInput.onChange(event).then(() => {
       const value = event.currentTarget.getAttribute('value')
       if (value) {
         event.currentTarget.value = value
       }
     })
   }
-  const handleFakeInputClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleFakeInputClick = () => {
     setIsClosed((prevState) => !prevState)
   }
   return (

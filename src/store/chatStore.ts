@@ -33,7 +33,7 @@ export const $ChatStore = createStore<Array<ChatItemStore>>([])
       }
     })
     if (ChatItem) {
-      newState.forEach((value, index) => {
+      newState.forEach((value) => {
         if (value.username === message.userName) {
           value.messages?.push(message)
         }

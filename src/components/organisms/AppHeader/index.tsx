@@ -4,7 +4,7 @@ import './style.scss'
 import AccountIcon from '../../../assets/img/accounticon.svg'
 import React from 'react'
 
-const AppHeader = () => {
+const AppHeader: React.FC = () => {
   const AvatarStyle: React.CSSProperties = {
     boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.08)',
   }

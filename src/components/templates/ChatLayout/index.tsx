@@ -3,7 +3,6 @@ import UserList from '../../organisms/UserList'
 import React from 'react'
 import './style.scss'
 import ChatArea from '../../organisms/ChatArea'
-import { UserCardItem } from '../../molecules/UserCard'
 import BeautyBG from '../../../assets/img/chatBeautyBackground.svg'
 import Text from '../../atoms/Text'
 
