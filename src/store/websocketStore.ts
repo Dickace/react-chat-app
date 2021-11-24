@@ -9,8 +9,9 @@ export const setWebsocket = createEvent<WebSocket>()
 export const $WebsocketStore = createStore<WebsocketStore>({}).on(
   setWebsocket,
   (state, websocket) => {
-    const newState = state
+    const newState = { ...state }
     newState.websocket = websocket
+
     return newState
   }
 )

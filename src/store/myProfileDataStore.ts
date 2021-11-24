@@ -11,6 +11,9 @@ export interface IMyProfileDataStore {
 export const $MyProfileDataStore = createStore<IMyProfileDataStore>(
   {} as IMyProfileDataStore
 ).on(setMyProfileDataStore, (state, user: UserResponse) => {
-  state.name = user.name
-  state.gender = user.gender
+  console.log(user)
+  const newState = { ...state }
+  newState.name = user.name
+  newState.gender = user.gender
+  return newState
 })

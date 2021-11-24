@@ -10,8 +10,9 @@ export const setGenderList = createEvent<genderListResponse>()
 export const $genderListStore = createStore<Array<Gender>>([]).on(
   setGenderList,
   (state, data) => {
+    const newState: Array<Gender> = [...state]
     data?.genders.map((value) => {
-      state.push(value)
+      newState.push(value)
     })
   }
 )

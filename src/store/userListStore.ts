@@ -33,7 +33,7 @@ export const $userList = createStore<Array<UserCardItem>>([])
     webSocket.send(JSON.stringify({ type: 'users_list' }))
   })
   .on(updateUserSelect, (state: Array<UserCardItem>, username: string) => {
-    const newState: Array<UserCardItem> = state
+    const newState: Array<UserCardItem> = [...state]
     newState.find((element) => {
       element.isSelected = element.username === username
     })

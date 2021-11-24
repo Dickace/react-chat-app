@@ -14,7 +14,7 @@ export const saveMessage = createEvent<MessageItem>()
 
 export const $ChatStore = createStore<Array<ChatItemStore>>([])
   .on(setMessages, (state) => {
-    let newState: Array<ChatItemStore> = state
+    let newState: Array<ChatItemStore> = [...state]
     const localChats = localStorage.getItem('chats')
     if (localChats !== null) {
       newState = JSON.parse(localChats)
@@ -46,6 +46,5 @@ export const $ChatStore = createStore<Array<ChatItemStore>>([])
     }
 
     localStorage.setItem('chats', JSON.stringify(newState))
-    console.log(newState === state)
     return newState
   })

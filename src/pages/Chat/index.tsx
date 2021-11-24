@@ -69,6 +69,8 @@ const Chat: React.FC = () => {
       .catch((err) => {
         console.log(err)
       })
+  }, [])
+  useEffect(() => {
     const websocket = new WebSocket(
       `${URLS.WS_URL}/?type=test&ws_id=${connectKey}`
     )
@@ -111,6 +113,7 @@ const Chat: React.FC = () => {
             isFromMe: false,
             text: decodeMsg.data.text,
           }
+          console.log(myProfileDataStore)
           if (decodeMsg.data?.usersender === myProfileDataStore.name) {
             message.isFromMe = true
           } else if (decodeMsg.data?.userreciver === myProfileDataStore.name) {
@@ -131,7 +134,6 @@ const Chat: React.FC = () => {
     }
     setWebsocket(websocket)
   }, [])
-
   return (
     <ChatLayout
       handleUserCardClick={handleUserCardClick}
